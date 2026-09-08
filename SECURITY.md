@@ -1,6 +1,6 @@
 # Security
 
-This project runs no server. The site is static HTML, CSS and JavaScript built from `app/` and served from GitHub Pages; the data
+This project runs no server. The site is static HTML, CSS and JavaScript built from `app/` and served as static files by Vercel; the data
 pipeline in `core/` runs in GitHub Actions with read-only repository permissions and writes only to its own artifacts.
 
 ## What we collect

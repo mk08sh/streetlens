@@ -1,6 +1,6 @@
 # StreetLens
 
-Live site: https://mk08sh.github.io/streetlens/ · Repository: https://github.com/mk08sh/streetlens
+Repository: https://github.com/mk08sh/streetlens · deployed on Vercel from `main`
 
 **Open evidence about how streets and neighbourhoods actually work, for anyone making decisions about them.**
 
