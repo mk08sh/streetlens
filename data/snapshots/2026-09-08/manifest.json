@@ -1,0 +1,46 @@
+{
+ "date": "2026-09-08",
+ "city": "toronto",
+ "files": {
+  "toronto-bike-counters-15min-2025-2026.csv": {
+   "source": "toronto-bike-counters-15min-2025-2026",
+   "url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/datastore/dump/d7569ac4-d102-474c-8b2f-7c6c2c539ff2",
+   "licence": "toronto-ogl",
+   "layer": "movement",
+   "bytes": 29602852,
+   "sha256": "24f115c6a5b338976b65d5db1cee3de9b748825b9c9df1dbc7250c920cc655cb",
+   "fetched_at": "2026-09-08T14:54:57.437428+00:00",
+   "seconds": 5.8
+  },
+  "eccc-daily-toronto-city.geojson": {
+   "source": "eccc-daily-toronto-city",
+   "url": "https://api.weather.gc.ca/collections/climate-daily/items (paged, 1501 features)",
+   "licence": "eccc",
+   "layer": "weather",
+   "bytes": 1532420,
+   "sha256": "175194a43823d159a4ba16b0b1f56798c4fc9c42e329b38be203d86366c53e8e",
+   "fetched_at": "2026-09-08T14:54:57.819344+00:00",
+   "seconds": 0.4
+  },
+  "ttc-subway-delay-codes.csv": {
+   "source": "ttc-subway-delay-codes",
+   "url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/datastore/dump/9e9efbb6-3a2f-4934-ac94-9150ecaeb548",
+   "licence": "toronto-ogl",
+   "layer": "movement",
+   "bytes": 5470,
+   "sha256": "a10330bbb1809c3a199bd719620f731508bd486dd681334279b4af26bc17bf8d",
+   "fetched_at": "2026-09-08T14:54:58.041599+00:00",
+   "seconds": 0.2
+  },
+  "toronto-traffic-cameras.geojson": {
+   "source": "toronto-traffic-cameras",
+   "url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/a3309088-5fd4-4d34-8297-77c8301840ac/resource/4a568300-c7f8-496d-b150-dff6f5dc6d4f/download/traffic-camera-list-4326.geojson",
+   "licence": "toronto-ogl",
+   "layer": "operations",
+   "bytes": 278410,
+   "sha256": "a4da30cea4b638771b3e6983edb4f73b653252a73ad686d9c99bd646d681ef4b",
+   "fetched_at": "2026-09-08T14:54:58.316648+00:00",
+   "seconds": 0.3
+  }
+ }
+}

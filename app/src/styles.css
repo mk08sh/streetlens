@@ -124,3 +124,41 @@ footer a { color: var(--muted); }
 .page .refs li { margin-bottom: 6px; }
 .page .cov td:first-child { font-weight: 600; width: 32%; }
 @media (max-width: 800px) { .insights, .tiles { grid-template-columns: 1fr; } h1 { font-size: 30px; } .sliderhead .hint { display: none; } }
+
+/* questions */
+.questions { margin-top: 22px; }
+.qpills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+.qpills button { font-size: 14px; padding: 8px 14px; }
+.qcard { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 20px 24px; }
+.qcard h2 { margin: 0 0 8px; font-size: 24px; letter-spacing: -.015em; }
+.qnote { font-size: 15px; margin: 0 0 12px; }
+.qcannot { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line); margin-top: 14px; padding-top: 10px; }
+.chart { width: 100%; height: auto; display: block; }
+.chart .grid { stroke: var(--line); }
+.chart .axis text { font-size: 10.5px; fill: var(--muted); }
+.chart .line { fill: none; stroke: currentColor; stroke-width: 2; }
+.chart .line.dashed { stroke-dasharray: 4 4; stroke-width: 1.5; }
+.chart .dot { fill: currentColor; }
+.chart .serieslabel { font-size: 11px; fill: currentColor; font-weight: 600; }
+.qfacts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 10px; }
+.qfact { background: var(--bg); border-radius: 10px; padding: 10px 12px; }
+.qfact .k { font-size: 13px; font-weight: 600; margin-bottom: 2px; }
+.qfact .v { font-size: 22px; font-weight: 800; letter-spacing: -.02em; }
+.qfact .s, .qpanel .s, .qcard .s { font-size: 13px; color: var(--ink); margin-top: 4px; }
+.multi.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.qpanel .k { font-size: 13px; font-weight: 600; }
+.qtable { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 8px; font-variant-numeric: tabular-nums; }
+.qtable th, .qtable td { text-align: left; padding: 4px 6px; border-bottom: 1px solid var(--line); }
+.qtable th { color: var(--muted); font-weight: 500; }
+.twocol { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.twocol .k { font-size: 13.5px; font-weight: 600; }
+.modelist { display: flex; flex-direction: column; gap: 6px; }
+.moderow { display: grid; grid-template-columns: 200px 1fr; gap: 10px; align-items: center; }
+.moderow .k { font-size: 13px; font-weight: 600; }
+.modebar { display: flex; height: 22px; border-radius: 6px; overflow: hidden; }
+.modebar span { display: flex; align-items: center; justify-content: center; font-size: 11px; color: #fff; font-weight: 700; }
+.modelegend { display: flex; gap: 16px; font-size: 12.5px; color: var(--muted); margin-top: 10px; }
+.modelegend i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 5px; vertical-align: -1px; }
+.sectionhead { font-size: 22px; margin: 34px 0 10px; }
+.sectionhead .sub { font-weight: 400; font-size: 14px; margin-left: 8px; }
+@media (max-width: 900px) { .qfacts, .multi.grid, .twocol { grid-template-columns: 1fr; } .moderow { grid-template-columns: 1fr; } }

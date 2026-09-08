@@ -187,6 +187,33 @@ sources:
     fields_of_interest: [LOCAL_DATE, TEMP, PRECIP_AMOUNT, WIND_SPEED, WEATHER_ENG_DESC]
     limits: "Downtown station. Use Toronto City Centre (6158359) as backup. Snow depth and daylight need separate derivation."
 
+  - id: eccc-daily-toronto-city
+    title: "Daily weather summary, Toronto City station, since 2022"
+    publisher: Environment and Climate Change Canada
+    dataset: https://api.weather.gc.ca/collections/climate-daily
+    licence: eccc
+    cadence: daily
+    size: small
+    layer: weather
+    fetch:
+      kind: ogc
+      url: https://api.weather.gc.ca/collections/climate-daily/items
+      params: {CLIMATE_IDENTIFIER: "6158355"}
+      since_days: 1500
+      ext: geojson
+    fields_of_interest: [LOCAL_DATE, MEAN_TEMPERATURE, MIN_TEMPERATURE, MAX_TEMPERATURE, TOTAL_PRECIPITATION, TOTAL_RAIN, TOTAL_SNOW, SNOW_ON_GROUND]
+    limits: "Daily only; used for the weather-response curves that span the full life of the bicycle counters."
+
+  - id: ttc-subway-delay-codes
+    title: "TTC subway delay code descriptions"
+    publisher: Toronto Transit Commission
+    dataset: https://open.toronto.ca/dataset/ttc-subway-delay-data/
+    licence: toronto-ogl
+    cadence: as available
+    size: small
+    layer: movement
+    fetch: {kind: ckan-dump, resource_id: 9e9efbb6-3a2f-4934-ac94-9150ecaeb548, ext: csv}
+
   - id: eccc-hourly-toronto-city-centre
     title: "Hourly weather with conditions, Toronto City Centre station (island airport)"
     publisher: Environment and Climate Change Canada

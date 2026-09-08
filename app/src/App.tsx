@@ -1,22 +1,25 @@
 import { useEffect, useMemo, useState } from 'react'
 import type { Corridor as C } from './types'
-import { defaultMonth, monthsBetween } from './data'
+import { defaultMonth, monthLabel, monthsBetween } from './data'
 import { CorridorMap } from './CorridorMap'
 import { Tiles } from './Tiles'
 import { Overview } from './Overview'
 import { About } from './About'
 import { DataPage } from './DataPage'
+import { Questions } from './Questions'
+import type { Behaviour } from './behaviour'
 
 type Page = 'home' | 'about' | 'data'
 const pageFromHash = (): Page => (location.hash === '#about' ? 'about' : location.hash === '#data' ? 'data' : 'home')
 
 export default function App() {
   const [c, setC] = useState<C | null>(null)
+  const [b, setB] = useState<Behaviour | null>(null)
   const [page, setPage] = useState<Page>(pageFromHash())
   const [sel, setSel] = useState<string | null>(null)
   const [ym, setYm] = useState('')
 
-  useEffect(() => { fetch('/data/toronto-bloor-west.json').then(r => r.json()).then((d: C) => { setC(d); setYm(defaultMonth(d)) }) }, [])
+  useEffect(() => { fetch('/data/toronto-bloor-west.json').then(r => r.json()).then((d: C) => { setC(d); setYm(defaultMonth(d)) }); fetch('/data/toronto-bloor-west-behaviour.json').then(r => r.json()).then(setB) }, [])
   useEffect(() => { const h = () => setPage(pageFromHash()); window.addEventListener('hashchange', h); return () => window.removeEventListener('hashchange', h) }, [])
   const months = useMemo(() => c ? monthsBetween('2016-01', c.corridor.snapshot.slice(0, 7)) : [], [c])
   useEffect(() => {
@@ -42,9 +45,12 @@ export default function App() {
       {page === 'home' && (
         <main>
           <h1 className="streetname">{c.corridor.street}<span className="sub"> · Toronto</span></h1>
-          <CorridorMap c={c} seg={seg} ym={ym} months={months} onSelect={setSel} onMonth={setYm} />
-          <p className="mapnote">{seg ? <>Showing <b>{seg.name}</b>. Click it again for the whole street.</> : <>Click a stretch of the street to focus on it. Move the slider to change the month.</>}</p>
+          <CorridorMap c={c} b={b} seg={seg} ym={ym} months={months} onSelect={setSel} onMonth={setYm} />
+          <p className="mapnote">{seg ? <>Showing <b>{seg.name}</b>. Click it again for the whole street.</> : <>Click a stretch of the street to ask the questions about it. The bars show who passes through.</>}</p>
+          {b && <Questions c={c} b={b} seg={seg} />}
           <section className="segment">
+            <h2 className="sectionhead">Month by month <span className="sub">{monthLabel(ym)} · move the slider on the map to change</span></h2>
+            <CorridorMap c={c} b={b} seg={seg} ym={ym} months={months} onSelect={setSel} onMonth={setYm} showDash />
             <Tiles c={c} seg={seg} ym={ym} />
             <p className="caveat">Raw measurements for {seg ? 'one stretch' : 'the street'} in one month. Not adjusted for season, weather or weekday, and not compared with any other street. A change on the street cannot be shown to have caused a change in these numbers from this view alone.</p>
           </section>
