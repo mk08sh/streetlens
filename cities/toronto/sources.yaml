@@ -46,6 +46,17 @@ sources:
     fetch: {kind: ckan-dump, resource_id: 262469c2-abfe-4756-9068-4ea5c7ba1af7, ext: csv}
     limits: "City-wide. Filter to corridor centreline_ids after download."
 
+  - id: toronto-tmc-raw-stations
+    title: "Turning Movement Counts, raw 15-minute data at the 18 station intersections (filtered pull)"
+    publisher: City of Toronto Transportation Services
+    dataset: https://open.toronto.ca/dataset/traffic-volumes-at-intersections-for-all-modes/
+    licence: toronto-ogl
+    cadence: daily
+    size: small
+    layer: movement
+    fetch: {kind: url, url: "https://ckan0.cf.opendata.inter.prod-toronto.ca/api/3/action/datastore_search?resource_id=262469c2-abfe-4756-9068-4ea5c7ba1af7&limit=1", ext: json}
+    limits: "Pulled per centreline_id with datastore_search filters (see core/derive/build_flow.py for the exact query). Cars, trucks and buses by approach and movement, bicycles by approach, pedestrians by crossing leg, per 15 minutes, on count days only."
+
   - id: toronto-tmc-raw-2010-2019
     title: "Turning Movement Counts, raw 15-minute data 2010 to 2019"
     publisher: City of Toronto Transportation Services
