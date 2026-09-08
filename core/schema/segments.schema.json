@@ -1,0 +1,124 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "Corridor segments (GeoJSON)",
+ "type": "object",
+ "required": [
+  "type",
+  "name",
+  "properties",
+  "features"
+ ],
+ "properties": {
+  "type": {
+   "const": "FeatureCollection"
+  },
+  "name": {
+   "type": "string"
+  },
+  "properties": {
+   "type": "object",
+   "required": [
+    "city",
+    "corridor",
+    "street",
+    "from",
+    "to",
+    "segmentation",
+    "crs",
+    "defined"
+   ],
+   "properties": {
+    "crs": {
+     "const": "EPSG:4326"
+    },
+    "defined": {
+     "type": "string",
+     "format": "date"
+    }
+   }
+  },
+  "features": {
+   "type": "array",
+   "minItems": 3,
+   "items": {
+    "type": "object",
+    "required": [
+     "type",
+     "id",
+     "geometry",
+     "properties"
+    ],
+    "properties": {
+     "type": {
+      "const": "Feature"
+     },
+     "id": {
+      "type": "string",
+      "pattern": "^(seg|boundary):[a-z0-9-]+$"
+     },
+     "properties": {
+      "type": "object",
+      "required": [
+       "kind",
+       "order"
+      ],
+      "properties": {
+       "kind": {
+        "enum": [
+         "segment",
+         "boundary"
+        ]
+       },
+       "order": {
+        "type": "integer",
+        "minimum": 0
+       },
+       "geometry_status": {
+        "enum": [
+         "schematic",
+         "centreline",
+         "surveyed"
+        ]
+       }
+      },
+      "allOf": [
+       {
+        "if": {
+         "properties": {
+          "kind": {
+           "const": "segment"
+          }
+         }
+        },
+        "then": {
+         "required": [
+          "name",
+          "from_boundary",
+          "to_boundary",
+          "approx_length_m",
+          "geometry_status"
+         ]
+        }
+       },
+       {
+        "if": {
+         "properties": {
+          "kind": {
+           "const": "boundary"
+          }
+         }
+        },
+        "then": {
+         "required": [
+          "cross_street",
+          "source"
+         ]
+        }
+       }
+      ]
+     }
+    }
+   }
+  }
+ }
+}

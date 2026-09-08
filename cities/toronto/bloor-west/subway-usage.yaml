@@ -1,0 +1,27 @@
+# Typical-weekday customers travelling to and from each Line 2 station platform, transcribed from TTC PDFs
+# (one table per year; the TTC does not publish this as open data). Values are as printed. Re-check on each new release.
+corridor: toronto/bloor-west
+measure: "customers to and from platform, typical weekday"
+periods:
+  "2023-2024": {covers: "Sep 2023 – Aug 2024", source: "https://cdn.ttc.ca/-/media/Project/TTC/DevProto/Documents/Home/Transparency-and-accountability/Subway-Ridership-20232024.pdf"}
+  "2024-2025": {covers: "Sep 2024 – Nov 2025", source: "https://cdn.ttc.ca/-/media/Project/TTC/DevProto/Documents/Home/Transparency-and-accountability/Subway-Ridership-20242025.pdf"}
+line_total: {"2023-2024": 403582, "2024-2025": 437107}
+stations:
+  boundary:yonge:      {"2023-2024": 121531, "2024-2025": 141795, note: "Line 2 platform only; Line 1 platform listed separately by TTC"}
+  boundary:bay:        {"2023-2024": 20980,  "2024-2025": 22233}
+  boundary:st-george:  {"2023-2024": 108866, "2024-2025": 97676, note: "Line 2 platform only"}
+  boundary:spadina:    {"2023-2024": 27601,  "2024-2025": 25070, note: "Line 2 platform only"}
+  boundary:bathurst:   {"2023-2024": 30598,  "2024-2025": 27692}
+  boundary:christie:   {"2023-2024": 11407,  "2024-2025": 11674}
+  boundary:ossington:  {"2023-2024": 22109,  "2024-2025": 24059}
+  boundary:dufferin:   {"2023-2024": 26800,  "2024-2025": 26937}
+  boundary:lansdowne:  {"2023-2024": 17406,  "2024-2025": 17320}
+  boundary:dundas-west: {"2023-2024": 23861, "2024-2025": 23842}
+  boundary:keele:      {"2023-2024": 16305,  "2024-2025": 16106}
+  boundary:high-park:  {"2023-2024": 9173,   "2024-2025": 9390}
+  boundary:runnymede:  {"2023-2024": 15838,  "2024-2025": 16544}
+  boundary:jane:       {"2023-2024": 14953,  "2024-2025": 14829}
+  boundary:old-mill:   {"2023-2024": 6109,   "2024-2025": 5645}
+  boundary:royal-york: {"2023-2024": 17337,  "2024-2025": 19422}
+  boundary:islington:  {"2023-2024": 25023,  "2024-2025": 29605}
+  boundary:kipling:    {"2023-2024": 49392,  "2024-2025": 93284, note: "Near-doubling between releases; likely a counting or terminal change. Do not read as growth without confirmation from TTC."}

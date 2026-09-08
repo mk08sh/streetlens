@@ -1,0 +1,135 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "Corridor interventions log",
+ "type": "object",
+ "required": [
+  "corridor",
+  "entries"
+ ],
+ "properties": {
+  "corridor": {
+   "type": "string"
+  },
+  "entries": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "required": [
+     "id",
+     "kind",
+     "segments",
+     "date",
+     "status",
+     "sources"
+    ],
+    "properties": {
+     "id": {
+      "type": "string",
+      "pattern": "^[0-9]{4}(-[0-9]{2})?(-[0-9]{2})?-[a-z0-9-]+$"
+     },
+     "kind": {
+      "enum": [
+       "bike-lane-installed",
+       "bike-lane-removed",
+       "lane-reconfigured",
+       "construction-start",
+       "construction-end",
+       "opening",
+       "legislation",
+       "court-ruling",
+       "announcement",
+       "other"
+      ]
+     },
+     "segments": {
+      "oneOf": [
+       {
+        "const": "all"
+       },
+       {
+        "type": "array",
+        "minItems": 1,
+        "items": {
+         "type": "string",
+         "pattern": "^seg:[a-z0-9-]+$"
+        }
+       }
+      ]
+     },
+     "date": {
+      "type": [
+       "string",
+       "integer"
+      ],
+      "pattern": "^[0-9]{4}(-[0-9]{2})?(-[0-9]{2})?$"
+     },
+     "status": {
+      "enum": [
+       "verified",
+       "reported",
+       "unverified"
+      ]
+     },
+     "sources": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "design_before": {
+      "type": "string"
+     },
+     "design_after": {
+      "type": "string"
+     },
+     "extent": {
+      "type": "string"
+     },
+     "notes": {
+      "type": "string"
+     },
+     "corrections": {
+      "type": "array",
+      "items": {
+       "type": "object",
+       "required": [
+        "date",
+        "note"
+       ]
+      }
+     }
+    },
+    "allOf": [
+     {
+      "if": {
+       "properties": {
+        "status": {
+         "const": "verified"
+        }
+       }
+      },
+      "then": {
+       "properties": {
+        "sources": {
+         "minItems": 1
+        }
+       }
+      }
+     }
+    ]
+   }
+  },
+  "confounders": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "required": [
+     "id",
+     "date",
+     "kind",
+     "notes"
+    ]
+   }
+  }
+ }
+}

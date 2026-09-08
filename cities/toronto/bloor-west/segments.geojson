@@ -1,0 +1,873 @@
+{
+ "type": "FeatureCollection",
+ "name": "bloor-west",
+ "properties": {
+  "city": "toronto",
+  "corridor": "bloor-west",
+  "street": "Bloor St W",
+  "from": "Yonge St",
+  "to": "Kipling Ave",
+  "segmentation": "Line 2 subway station cross-streets, east to west",
+  "crs": "EPSG:4326",
+  "approx_length_m": 12410,
+  "defined": "2026-09-04",
+  "source_note": "Boundary coordinates and IDs from City of Toronto 'Traffic Volumes - Multimodal Intersection Turning Movement Counts', most-recent summary resource, fetched 2026-09-04."
+ },
+ "features": [
+  {
+   "type": "Feature",
+   "id": "boundary:yonge",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.38678,
+     43.67022
+    ]
+   },
+   "properties": {
+    "kind": "boundary",
+    "order": 0,
+    "cross_street": "Yonge St",
+    "station": "Bloor-Yonge",
+    "centreline_id": 13463436,
+    "px": 40,
+    "latest_tmc_count": "2025-06-25",
+    "source": "toronto-tmc-most-recent",
+    "note": "Point is the Bloor St W intersection node from the City TMC summary, not the station entrance."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "boundary:bay",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.38948,
+     43.6697
+    ]
+   },
+   "properties": {
+    "kind": "boundary",
+    "order": 1,
+    "cross_street": "Bay St",
+    "station": "Bay",
+    "centreline_id": 13463548,
+    "px": 70,
+    "latest_tmc_count": "2025-06-25",
+    "source": "toronto-tmc-most-recent",
+    "note": "Point is the Bloor St W intersection node from the City TMC summary, not the station entrance."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "boundary:st-george",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.39983,
+     43.66751
+    ]
+   },
+   "properties": {
+    "kind": "boundary",
+    "order": 2,
+    "cross_street": "St George St",
+    "station": "St. George",
+    "centreline_id": 13463947,
+    "px": 271,
+    "latest_tmc_count": "2025-06-25",
+    "source": "toronto-tmc-most-recent",
+    "note": "Point is the Bloor St W intersection node from the City TMC summary, not the station entrance."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "boundary:spadina",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.40383,
+     43.66666
+    ]
+   },
+   "properties": {
+    "kind": "boundary",
+    "order": 3,
+    "cross_street": "Spadina Ave / Spadina Rd",
+    "station": "Spadina",
+    "centreline_id": 13464094,
+    "px": 281,
+    "latest_tmc_count": "2025-06-25",
+    "source": "toronto-tmc-most-recent",
+    "note": "Point is the Bloor St W intersection node from the City TMC summary, not the station entrance."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "boundary:bathurst",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.41119,
+     43.66512
+    ]
+   },
+   "properties": {
+    "kind": "boundary",
+    "order": 4,
+    "cross_street": "Bathurst St",
+    "station": "Bathurst",
+    "centreline_id": 13464373,
+    "px": 321,
+    "latest_tmc_count": "2026-07-25",
+    "source": "toronto-tmc-most-recent",
+    "note": "Point is the Bloor St W intersection node from the City TMC summary, not the station entrance."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "boundary:christie",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.41883,
+     43.66348
+    ]
+   },
+   "properties": {
+    "kind": "boundary",
+    "order": 5,
+    "cross_street": "Christie St / Grace St",
+    "station": "Christie",
+    "centreline_id": 13464653,
+    "px": 322,
+    "latest_tmc_count": "2024-06-18",
+    "source": "toronto-tmc-most-recent",
+    "note": "Point is the Bloor St W intersection node from the City TMC summary, not the station entrance."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "boundary:ossington",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.42564,
+     43.66198
+    ]
+   },
+   "properties": {
+    "kind": "boundary",
+    "order": 6,
+    "cross_street": "Ossington Ave",
+    "station": "Ossington",
+    "centreline_id": 13464908,
+    "px": 341,
+    "latest_tmc_count": "2025-06-25",
+    "source": "toronto-tmc-most-recent",
+    "note": "Point is the Bloor St W intersection node from the City TMC summary, not the station entrance."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "boundary:dufferin",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.43532,
+     43.65986
+    ]
+   },
+   "properties": {
+    "kind": "boundary",
+    "order": 7,
+    "cross_street": "Dufferin St",
+    "station": "Dufferin",
+    "centreline_id": 13465260,
+    "px": 325,
+    "latest_tmc_count": "2026-07-25",
+    "source": "toronto-tmc-most-recent",
+    "note": "Point is the Bloor St W intersection node from the City TMC summary, not the station entrance."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "boundary:lansdowne",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.44273,
+     43.65833
+    ]
+   },
+   "properties": {
+    "kind": "boundary",
+    "order": 8,
+    "cross_street": "Lansdowne Ave",
+    "station": "Lansdowne",
+    "centreline_id": 13465512,
+    "px": 326,
+    "latest_tmc_count": "2025-06-25",
+    "source": "toronto-tmc-most-recent",
+    "note": "Point is the Bloor St W intersection node from the City TMC summary, not the station entrance."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "boundary:dundas-west",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.45245,
+     43.65632
+    ]
+   },
+   "properties": {
+    "kind": "boundary",
+    "order": 9,
+    "cross_street": "Dundas St W (East)",
+    "station": "Dundas West",
+    "centreline_id": 13465876,
+    "px": 327,
+    "latest_tmc_count": "2025-06-25",
+    "source": "toronto-tmc-most-recent",
+    "note": "Point is the Bloor St W intersection node from the City TMC summary, not the station entrance."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "boundary:keele",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.46004,
+     43.6547
+    ]
+   },
+   "properties": {
+    "kind": "boundary",
+    "order": 10,
+    "cross_street": "Keele St / Parkside Dr",
+    "station": "Keele",
+    "centreline_id": 13466139,
+    "px": 328,
+    "latest_tmc_count": "2025-06-11",
+    "source": "toronto-tmc-most-recent",
+    "note": "Point is the Bloor St W intersection node from the City TMC summary, not the station entrance."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "boundary:high-park",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.46526,
+     43.65354
+    ]
+   },
+   "properties": {
+    "kind": "boundary",
+    "order": 11,
+    "cross_street": "High Park Ave / Colborne Lodge Dr",
+    "station": "High Park",
+    "centreline_id": 13466332,
+    "px": 329,
+    "latest_tmc_count": "2025-06-11",
+    "source": "toronto-tmc-most-recent",
+    "note": "Point is the Bloor St W intersection node from the City TMC summary, not the station entrance."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "boundary:runnymede",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.4763,
+     43.65113
+    ]
+   },
+   "properties": {
+    "kind": "boundary",
+    "order": 12,
+    "cross_street": "Runnymede Rd",
+    "station": "Runnymede",
+    "centreline_id": 13466753,
+    "px": 331,
+    "latest_tmc_count": "2026-05-13",
+    "source": "toronto-tmc-most-recent",
+    "note": "Point is the Bloor St W intersection node from the City TMC summary, not the station entrance."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "boundary:jane",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.48446,
+     43.64931
+    ]
+   },
+   "properties": {
+    "kind": "boundary",
+    "order": 13,
+    "cross_street": "Jane St",
+    "station": "Jane",
+    "centreline_id": 13467077,
+    "px": 333,
+    "latest_tmc_count": "2026-05-21",
+    "source": "toronto-tmc-most-recent",
+    "note": "Point is the Bloor St W intersection node from the City TMC summary, not the station entrance."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "boundary:old-mill",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.49537,
+     43.6496
+    ]
+   },
+   "properties": {
+    "kind": "boundary",
+    "order": 14,
+    "cross_street": "Old Mill Trl",
+    "station": "Old Mill",
+    "centreline_id": 13467064,
+    "px": 335,
+    "latest_tmc_count": "2026-05-13",
+    "source": "toronto-tmc-most-recent",
+    "note": "Point is the Bloor St W intersection node from the City TMC summary, not the station entrance."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "boundary:royal-york",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.51136,
+     43.64736
+    ]
+   },
+   "properties": {
+    "kind": "boundary",
+    "order": 15,
+    "cross_street": "Royal York Rd",
+    "station": "Royal York",
+    "centreline_id": 13467463,
+    "px": 338,
+    "latest_tmc_count": "2026-05-12",
+    "source": "toronto-tmc-most-recent",
+    "note": "Point is the Bloor St W intersection node from the City TMC summary, not the station entrance."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "boundary:islington",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.52343,
+     43.64464
+    ]
+   },
+   "properties": {
+    "kind": "boundary",
+    "order": 16,
+    "cross_street": "Islington Ave",
+    "station": "Islington",
+    "centreline_id": 13467841,
+    "px": 339,
+    "latest_tmc_count": "2026-05-12",
+    "source": "toronto-tmc-most-recent",
+    "note": "Point is the Bloor St W intersection node from the City TMC summary, not the station entrance."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "boundary:kipling",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.53534,
+     43.6418
+    ]
+   },
+   "properties": {
+    "kind": "boundary",
+    "order": 17,
+    "cross_street": "Kipling Ave",
+    "station": "Kipling",
+    "centreline_id": 13468211,
+    "px": 1321,
+    "latest_tmc_count": "2025-06-11",
+    "source": "toronto-tmc-most-recent",
+    "note": "Point is the Bloor St W intersection node from the City TMC summary, not the station entrance."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "seg:yonge-bay",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -79.38678,
+      43.67022
+     ],
+     [
+      -79.38948,
+      43.6697
+     ]
+    ]
+   },
+   "properties": {
+    "kind": "segment",
+    "order": 0,
+    "name": "Bloor-Yonge to Bay",
+    "from_boundary": "boundary:yonge",
+    "to_boundary": "boundary:bay",
+    "approx_length_m": 225,
+    "geometry_status": "schematic",
+    "geometry_note": "Straight line between boundaries. Replace with Toronto Centreline (TCL) geometry in a later pass; boundary centreline_ids are authoritative."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "seg:bay-st-george",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -79.38948,
+      43.6697
+     ],
+     [
+      -79.39983,
+      43.66751
+     ]
+    ]
+   },
+   "properties": {
+    "kind": "segment",
+    "order": 1,
+    "name": "Bay to St. George",
+    "from_boundary": "boundary:bay",
+    "to_boundary": "boundary:st-george",
+    "approx_length_m": 867,
+    "geometry_status": "schematic",
+    "geometry_note": "Straight line between boundaries. Replace with Toronto Centreline (TCL) geometry in a later pass; boundary centreline_ids are authoritative."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "seg:st-george-spadina",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -79.39983,
+      43.66751
+     ],
+     [
+      -79.40383,
+      43.66666
+     ]
+    ]
+   },
+   "properties": {
+    "kind": "segment",
+    "order": 2,
+    "name": "St. George to Spadina",
+    "from_boundary": "boundary:st-george",
+    "to_boundary": "boundary:spadina",
+    "approx_length_m": 335,
+    "geometry_status": "schematic",
+    "geometry_note": "Straight line between boundaries. Replace with Toronto Centreline (TCL) geometry in a later pass; boundary centreline_ids are authoritative."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "seg:spadina-bathurst",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -79.40383,
+      43.66666
+     ],
+     [
+      -79.41119,
+      43.66512
+     ]
+    ]
+   },
+   "properties": {
+    "kind": "segment",
+    "order": 3,
+    "name": "Spadina to Bathurst",
+    "from_boundary": "boundary:spadina",
+    "to_boundary": "boundary:bathurst",
+    "approx_length_m": 616,
+    "geometry_status": "schematic",
+    "geometry_note": "Straight line between boundaries. Replace with Toronto Centreline (TCL) geometry in a later pass; boundary centreline_ids are authoritative."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "seg:bathurst-christie",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -79.41119,
+      43.66512
+     ],
+     [
+      -79.41883,
+      43.66348
+     ]
+    ]
+   },
+   "properties": {
+    "kind": "segment",
+    "order": 4,
+    "name": "Bathurst to Christie",
+    "from_boundary": "boundary:bathurst",
+    "to_boundary": "boundary:christie",
+    "approx_length_m": 641,
+    "geometry_status": "schematic",
+    "geometry_note": "Straight line between boundaries. Replace with Toronto Centreline (TCL) geometry in a later pass; boundary centreline_ids are authoritative."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "seg:christie-ossington",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -79.41883,
+      43.66348
+     ],
+     [
+      -79.42564,
+      43.66198
+     ]
+    ]
+   },
+   "properties": {
+    "kind": "segment",
+    "order": 5,
+    "name": "Christie to Ossington",
+    "from_boundary": "boundary:christie",
+    "to_boundary": "boundary:ossington",
+    "approx_length_m": 573,
+    "geometry_status": "schematic",
+    "geometry_note": "Straight line between boundaries. Replace with Toronto Centreline (TCL) geometry in a later pass; boundary centreline_ids are authoritative."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "seg:ossington-dufferin",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -79.42564,
+      43.66198
+     ],
+     [
+      -79.43532,
+      43.65986
+     ]
+    ]
+   },
+   "properties": {
+    "kind": "segment",
+    "order": 6,
+    "name": "Ossington to Dufferin",
+    "from_boundary": "boundary:ossington",
+    "to_boundary": "boundary:dufferin",
+    "approx_length_m": 814,
+    "geometry_status": "schematic",
+    "geometry_note": "Straight line between boundaries. Replace with Toronto Centreline (TCL) geometry in a later pass; boundary centreline_ids are authoritative."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "seg:dufferin-lansdowne",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -79.43532,
+      43.65986
+     ],
+     [
+      -79.44273,
+      43.65833
+     ]
+    ]
+   },
+   "properties": {
+    "kind": "segment",
+    "order": 7,
+    "name": "Dufferin to Lansdowne",
+    "from_boundary": "boundary:dufferin",
+    "to_boundary": "boundary:lansdowne",
+    "approx_length_m": 620,
+    "geometry_status": "schematic",
+    "geometry_note": "Straight line between boundaries. Replace with Toronto Centreline (TCL) geometry in a later pass; boundary centreline_ids are authoritative."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "seg:lansdowne-dundas-west",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -79.44273,
+      43.65833
+     ],
+     [
+      -79.45245,
+      43.65632
+     ]
+    ]
+   },
+   "properties": {
+    "kind": "segment",
+    "order": 8,
+    "name": "Lansdowne to Dundas West",
+    "from_boundary": "boundary:lansdowne",
+    "to_boundary": "boundary:dundas-west",
+    "approx_length_m": 813,
+    "geometry_status": "schematic",
+    "geometry_note": "Straight line between boundaries. Replace with Toronto Centreline (TCL) geometry in a later pass; boundary centreline_ids are authoritative."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "seg:dundas-west-keele",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -79.45245,
+      43.65632
+     ],
+     [
+      -79.46004,
+      43.6547
+     ]
+    ]
+   },
+   "properties": {
+    "kind": "segment",
+    "order": 9,
+    "name": "Dundas West to Keele",
+    "from_boundary": "boundary:dundas-west",
+    "to_boundary": "boundary:keele",
+    "approx_length_m": 637,
+    "geometry_status": "schematic",
+    "geometry_note": "Straight line between boundaries. Replace with Toronto Centreline (TCL) geometry in a later pass; boundary centreline_ids are authoritative."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "seg:keele-high-park",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -79.46004,
+      43.6547
+     ],
+     [
+      -79.46526,
+      43.65354
+     ]
+    ]
+   },
+   "properties": {
+    "kind": "segment",
+    "order": 10,
+    "name": "Keele to High Park",
+    "from_boundary": "boundary:keele",
+    "to_boundary": "boundary:high-park",
+    "approx_length_m": 439,
+    "geometry_status": "schematic",
+    "geometry_note": "Straight line between boundaries. Replace with Toronto Centreline (TCL) geometry in a later pass; boundary centreline_ids are authoritative."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "seg:high-park-runnymede",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -79.46526,
+      43.65354
+     ],
+     [
+      -79.4763,
+      43.65113
+     ]
+    ]
+   },
+   "properties": {
+    "kind": "segment",
+    "order": 11,
+    "name": "High Park to Runnymede",
+    "from_boundary": "boundary:high-park",
+    "to_boundary": "boundary:runnymede",
+    "approx_length_m": 928,
+    "geometry_status": "schematic",
+    "geometry_note": "Straight line between boundaries. Replace with Toronto Centreline (TCL) geometry in a later pass; boundary centreline_ids are authoritative."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "seg:runnymede-jane",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -79.4763,
+      43.65113
+     ],
+     [
+      -79.48446,
+      43.64931
+     ]
+    ]
+   },
+   "properties": {
+    "kind": "segment",
+    "order": 12,
+    "name": "Runnymede to Jane",
+    "from_boundary": "boundary:runnymede",
+    "to_boundary": "boundary:jane",
+    "approx_length_m": 687,
+    "geometry_status": "schematic",
+    "geometry_note": "Straight line between boundaries. Replace with Toronto Centreline (TCL) geometry in a later pass; boundary centreline_ids are authoritative."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "seg:jane-old-mill",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -79.48446,
+      43.64931
+     ],
+     [
+      -79.49537,
+      43.6496
+     ]
+    ]
+   },
+   "properties": {
+    "kind": "segment",
+    "order": 13,
+    "name": "Jane to Old Mill",
+    "from_boundary": "boundary:jane",
+    "to_boundary": "boundary:old-mill",
+    "approx_length_m": 878,
+    "geometry_status": "schematic",
+    "geometry_note": "Straight line between boundaries. Replace with Toronto Centreline (TCL) geometry in a later pass; boundary centreline_ids are authoritative."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "seg:old-mill-royal-york",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -79.49537,
+      43.6496
+     ],
+     [
+      -79.51136,
+      43.64736
+     ]
+    ]
+   },
+   "properties": {
+    "kind": "segment",
+    "order": 14,
+    "name": "Old Mill to Royal York",
+    "from_boundary": "boundary:old-mill",
+    "to_boundary": "boundary:royal-york",
+    "approx_length_m": 1310,
+    "geometry_status": "schematic",
+    "geometry_note": "Straight line between boundaries. Replace with Toronto Centreline (TCL) geometry in a later pass; boundary centreline_ids are authoritative."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "seg:royal-york-islington",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -79.51136,
+      43.64736
+     ],
+     [
+      -79.52343,
+      43.64464
+     ]
+    ]
+   },
+   "properties": {
+    "kind": "segment",
+    "order": 15,
+    "name": "Royal York to Islington",
+    "from_boundary": "boundary:royal-york",
+    "to_boundary": "boundary:islington",
+    "approx_length_m": 1017,
+    "geometry_status": "schematic",
+    "geometry_note": "Straight line between boundaries. Replace with Toronto Centreline (TCL) geometry in a later pass; boundary centreline_ids are authoritative."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "seg:islington-kipling",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -79.52343,
+      43.64464
+     ],
+     [
+      -79.53534,
+      43.6418
+     ]
+    ]
+   },
+   "properties": {
+    "kind": "segment",
+    "order": 16,
+    "name": "Islington to Kipling",
+    "from_boundary": "boundary:islington",
+    "to_boundary": "boundary:kipling",
+    "approx_length_m": 1009,
+    "geometry_status": "schematic",
+    "geometry_note": "Straight line between boundaries. Replace with Toronto Centreline (TCL) geometry in a later pass; boundary centreline_ids are authoritative."
+   }
+  }
+ ]
+}

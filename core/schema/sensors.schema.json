@@ -1,0 +1,44 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "Corridor sensor register",
+ "type": "object",
+ "required": [
+  "corridor"
+ ],
+ "properties": {
+  "corridor": {
+   "type": "string"
+  },
+  "permanent_bicycle_counters": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "required": [
+     "name",
+     "segment",
+     "lon",
+     "lat",
+     "active_since"
+    ],
+    "properties": {
+     "segment": {
+      "type": "string",
+      "pattern": "^seg:[a-z0-9-]+$"
+     },
+     "lon": {
+      "type": "number"
+     },
+     "lat": {
+      "type": "number"
+     }
+    }
+   }
+  },
+  "turning_movement_counts": {
+   "type": "object"
+  },
+  "weather": {
+   "type": "object"
+  }
+ }
+}

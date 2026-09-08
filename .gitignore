@@ -1,0 +1,8 @@
+# Raw snapshot files are large; only each snapshot's manifest (URLs, sizes, SHA-256) is committed.
+data/snapshots/*/*
+!data/snapshots/*/manifest.json
+__pycache__/
+.venv/
+.DS_Store
+app/node_modules/
+app/dist/

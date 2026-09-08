@@ -1,0 +1,21 @@
+name: snapshot
+# Weekly baseline snapshot of every small source. Artifacts are kept 90 days.
+# Move to object storage (see README "Archive storage") before relying on this for the permanent record.
+on:
+  schedule:
+    - cron: "0 9 * * 1"   # Mondays 09:00 UTC
+  workflow_dispatch:
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install -r requirements.txt
+      - run: python core/ingest/snapshot.py --city toronto
+      - uses: actions/upload-artifact@v4
+        with:
+          name: snapshot-${{ github.run_id }}
+          path: data/snapshots/
+          retention-days: 90

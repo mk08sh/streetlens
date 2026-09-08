@@ -1,0 +1,80 @@
+# Immutable public log of changes to the Bloor St W corridor (Yonge to Kipling).
+# Rules: entries are only ever appended or corrected with a dated `corrections:` note. Never deleted.
+# `status`: verified (primary source linked) | reported (secondary source) | unverified (needs a primary source).
+# Only events that have happened, or have been formally announced, belong here. No projected dates.
+corridor: toronto/bloor-west
+entries:
+  - id: 2016-bloor-pilot
+    kind: bike-lane-installed
+    segments: [seg:spadina-bathurst, seg:bathurst-christie, seg:christie-ossington]
+    extent: "Avenue Rd to Shaw St (pilot)"
+    date: "2016-08"
+    status: reported
+    sources:
+      - "City of Toronto Bloor Street West Bike Lane Pilot Project evaluation (2017)"
+    notes: "Pilot installed August 2016, made permanent by Council November 2017. Confirm exact install date and pilot extent against the City evaluation report."
+
+  - id: 2020-bloor-extension-shaw-runnymede
+    kind: bike-lane-installed
+    segments: [seg:ossington-dufferin, seg:dufferin-lansdowne, seg:lansdowne-dundas-west, seg:dundas-west-keele, seg:keele-high-park, seg:high-park-runnymede]
+    extent: "Shaw St to Runnymede Rd"
+    date: "2020"
+    status: unverified
+    sources: []
+    notes: "Extension approved 2020 and installed in phases through 2020-2021. Needs Council decision item and install dates."
+
+  - id: 2023-bloor-extension-runnymede-resurrection
+    kind: bike-lane-installed
+    segments: [seg:runnymede-jane, seg:jane-old-mill, seg:old-mill-royal-york, seg:royal-york-islington]
+    extent: "Runnymede Rd to Resurrection Rd"
+    date: "2023"
+    status: unverified
+    sources: []
+    notes: "Etobicoke extension. Needs Council decision item and install dates."
+
+  - id: 2024-11-bill-212
+    kind: legislation
+    segments: all
+    date: "2024-11-25"
+    status: verified
+    sources:
+      - "Reducing Gridlock, Saving You Time Act, 2024 (Ontario)"
+    notes: "Provincial act requiring restoration of motor vehicle lanes on specified Toronto roadways including Bloor St."
+
+  - id: 2025-12-resurrection-clissold-reconfigured
+    kind: lane-reconfigured
+    segments: [seg:royal-york-islington]
+    extent: "Resurrection Rd to Clissold Rd, approx 600 m"
+    date: "2025-12"
+    status: verified
+    sources:
+      - "Ontario news release, 2026-09-01, 'Ontario Restoring Vehicle Lanes on Toronto's Busiest Streets' (Quick Facts)"
+    design_before: "One vehicle lane per direction plus bike lane"
+    design_after: "Vehicle lane restored, bike lane maintained"
+    notes: "The only completed physical change under the provincial framework as of 2026-09-04. This is the primary within-corridor comparison segment."
+
+  - id: 2026-08-court-of-appeal
+    kind: court-ruling
+    segments: all
+    date: "2026-08"
+    status: reported
+    sources:
+      - "Ontario Court of Appeal decision overturning the lower-court injunction (August 2026)"
+    notes: "Court found road design is a policy matter for the Legislature. Removed the legal barrier to lane restoration. Add citation."
+
+  - id: 2026-09-01-province-announcement
+    kind: announcement
+    segments: [seg:royal-york-islington, seg:islington-kipling]
+    extent: "Bloor St W, starting east of Clissold Rd"
+    date: "2026-09-01"
+    status: verified
+    sources:
+      - "https://news.ontario.ca/en/release/1007962/ontario-restoring-vehicle-lanes-on-torontos-busiest-streets"
+    notes: "Province issued an RFP for design options on Bloor, Yonge, University, Queen's Park, Queen's Park Cres and Avenue Rd, and said vehicle-lane restoration begins immediately east of Clissold Rd. No construction start date was published. Do not record one until it is observed."
+
+confounders:
+  # Known events that affect the corridor independent of lane design. Add as observed.
+  - id: 2026-05-etobicoke-count-sweep
+    date: "2026-05-12"
+    kind: observation
+    notes: "City conducted turning movement counts at nearly every Bloor St W intersection from Jane to Resurrection Rd on 2026-05-12/13 and 2026-05-21. Treat as the pre-restoration baseline for those segments."

@@ -1,0 +1,53 @@
+# Continuous and repeat measurement points on the corridor. All from City of Toronto Open Data, fetched 2026-09-04.
+corridor: toronto/bloor-west
+permanent_bicycle_counters:
+  # Source: permanent-bicycle-counters, resource cycling_permanent_counts_locations. 15-minute bins, both directions.
+  - location_dir_ids: [5, 6]
+    name: "Bloor St W, west of Huron St"
+    segment: seg:st-george-spadina
+    centreline_id: 1142672
+    lon: -79.4022396
+    lat: 43.6670654
+    active_since: 2022-10-27
+    predecessor: {location_dir_ids: [7], active: "2018-02-09 to 2021-02-08"}
+  - location_dir_ids: [8, 9]
+    name: "Bloor St W, east of Palmerston Blvd"
+    segment: seg:bathurst-christie
+    centreline_id: 8353520
+    lon: -79.413093
+    lat: 43.6647258
+    active_since: 2023-03-31
+    predecessor: {location_dir_ids: [10, 11], active: "2018-02-09 to 2020-02-11"}
+  - location_dir_ids: [3, 4]
+    name: "Bloor St W, west of Oakmount Rd"
+    segment: seg:keele-high-park
+    centreline_id: 30042273
+    lon: -79.4625696
+    lat: 43.6541459
+    active_since: 2023-06-16
+  - location_dir_ids: [12, 13]
+    name: "Bloor St W, east of Old Mill Trl"
+    segment: seg:jane-old-mill
+    centreline_id: 30081325
+    lon: -79.494202
+    lat: 43.6491724
+    active_since: 2024-07-31
+counter_gaps:
+  - "No permanent counter west of Old Mill. The Royal York to Kipling segments, where the first restoration happened, rely on repeat turning-movement counts only."
+  - "No permanent counter between Yonge and St George or between Christie and Keele."
+
+turning_movement_counts:
+  # Source: traffic-volumes-at-intersections-for-all-modes. One-day counts (typically 8 h) of cars, trucks, buses, bikes, pedestrians per approach.
+  # 116 Bloor St W intersection nodes between Yonge and Kipling have at least one count; 46 have a count from 2025 or 2026.
+  # Station boundary intersections and their signal ids (px) are in segments.geojson. Use `px` and `centreline_id` to join.
+  cadence: "Irregular. Any given intersection is counted roughly every 1 to 8 years. Never treat these as continuous."
+  latest_sweeps:
+    - {date: 2025-06-25, extent: "Yonge to Dundas West, most signalized intersections"}
+    - {date: 2025-06-11, extent: "Keele to Kipling, selected intersections"}
+    - {date: 2026-05-12, extent: "Runnymede to Resurrection Rd, nearly all intersections"}
+    - {date: 2026-07-25, extent: "Bathurst, Dufferin"}
+
+weather:
+  # Environment and Climate Change Canada, GeoMet OGC API, collection climate-hourly.
+  primary: {station: "TORONTO CITY", climate_id: "6158355", stn_id: 31688, hourly_since: 2002-06-04}
+  secondary: {station: "TORONTO CITY CENTRE", climate_id: "6158359", stn_id: 48549, hourly_since: 2009-12-10}

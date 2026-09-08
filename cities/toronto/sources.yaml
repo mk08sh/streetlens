@@ -1,0 +1,292 @@
+# Source catalogue for Toronto. Every dataset the snapshot script fetches, with its licence, cadence and known limits.
+# `size: small` sources are fetched on every run. `size: large` only with --full.
+# `fetch.kind`: url (plain GET) | ckan-dump (CKAN datastore dump, CSV) | arcgis (paged FeatureServer query, GeoJSON) | ogc (OGC API Features, paged)
+city: toronto
+country: CA
+timezone: America/Toronto
+licences:
+  toronto-ogl: {name: "Open Government Licence – Toronto", url: "https://open.toronto.ca/open-data-license/"}
+  tps-ogl: {name: "Open Government Licence – Toronto Police Service", url: "https://data.torontopolice.on.ca/pages/open-data-licence"}
+  eccc: {name: "Environment and Climate Change Canada Data Servers End-use Licence", url: "https://eccc-msc.github.io/open-data/licence/readme_en/"}
+  gbfs: {name: "Bike Share Toronto GBFS terms", url: "https://bikesharetoronto.com/"}
+  odbl: {name: "Open Database License (OpenStreetMap)", url: "https://www.openstreetmap.org/copyright"}
+
+sources:
+  - id: toronto-tmc-most-recent
+    title: "Turning Movement Counts, most recent count per intersection"
+    publisher: City of Toronto Transportation Services
+    dataset: https://open.toronto.ca/dataset/traffic-volumes-at-intersections-for-all-modes/
+    licence: toronto-ogl
+    cadence: daily
+    size: small
+    layer: movement
+    fetch: {kind: ckan-dump, resource_id: 6afa3b1f-f6a5-4235-8bd6-7568411c19f4, ext: csv}
+    fields_of_interest: [location_name, longitude, latitude, centreline_id, px, latest_count_date, count_duration, total_vehicle, total_bike, total_pedestrian, am_peak_vehicle, pm_peak_vehicle]
+    limits: "One-day counts, typically 8 hours, years apart at any one intersection. Bicycle counts before 2017 are often near zero because bikes were not consistently counted."
+
+  - id: toronto-tmc-summary
+    title: "Turning Movement Counts, all counts summary"
+    publisher: City of Toronto Transportation Services
+    dataset: https://open.toronto.ca/dataset/traffic-volumes-at-intersections-for-all-modes/
+    licence: toronto-ogl
+    cadence: daily
+    size: small
+    layer: movement
+    fetch: {kind: ckan-dump, resource_id: 1364bffa-29a3-4c39-af8a-925d8ca7bf1f, ext: csv}
+    limits: "Same as above; one row per historical count."
+
+  - id: toronto-tmc-raw-2020-2029
+    title: "Turning Movement Counts, raw 15-minute data 2020 to 2029"
+    publisher: City of Toronto Transportation Services
+    dataset: https://open.toronto.ca/dataset/traffic-volumes-at-intersections-for-all-modes/
+    licence: toronto-ogl
+    cadence: daily
+    size: large
+    layer: movement
+    fetch: {kind: ckan-dump, resource_id: 262469c2-abfe-4756-9068-4ea5c7ba1af7, ext: csv}
+    limits: "City-wide. Filter to corridor centreline_ids after download."
+
+  - id: toronto-tmc-raw-2010-2019
+    title: "Turning Movement Counts, raw 15-minute data 2010 to 2019"
+    publisher: City of Toronto Transportation Services
+    dataset: https://open.toronto.ca/dataset/traffic-volumes-at-intersections-for-all-modes/
+    licence: toronto-ogl
+    cadence: daily
+    size: large
+    layer: movement
+    fetch: {kind: ckan-dump, resource_id: ae400fe2-98ce-4e73-8a94-024b22e29a22, ext: csv}
+
+  - id: toronto-bike-counters-locations
+    title: "Permanent bicycle counters, locations"
+    publisher: City of Toronto Transportation Services
+    dataset: https://open.toronto.ca/dataset/permanent-bicycle-counters/
+    licence: toronto-ogl
+    cadence: monthly
+    size: small
+    layer: movement
+    fetch: {kind: ckan-dump, resource_id: 3de6bec4-221c-4f9e-aebc-780b6841e55c, ext: csv}
+
+  - id: toronto-bike-counters-daily
+    title: "Permanent bicycle counters, daily totals"
+    publisher: City of Toronto Transportation Services
+    dataset: https://open.toronto.ca/dataset/permanent-bicycle-counters/
+    licence: toronto-ogl
+    cadence: monthly
+    size: small
+    layer: movement
+    fetch: {kind: ckan-dump, resource_id: b6fdab07-bf2f-4c30-8b68-d4cde7674941, ext: csv}
+    limits: "Four counters on Bloor W (see bloor-west/sensors.yaml). Counter outages appear as zeros or gaps; check latest_calibration_study."
+
+  - id: toronto-bike-counters-15min-2025-2026
+    title: "Permanent bicycle counters, 15-minute bins 2025 to 2026"
+    publisher: City of Toronto Transportation Services
+    dataset: https://open.toronto.ca/dataset/permanent-bicycle-counters/
+    licence: toronto-ogl
+    cadence: monthly
+    size: large
+    layer: movement
+    fetch: {kind: ckan-dump, resource_id: d7569ac4-d102-474c-8b2f-7c6c2c539ff2, ext: csv}
+
+  - id: toronto-bike-counters-15min-2026-2027
+    title: "Permanent bicycle counters, 15-minute bins 2026 to 2027"
+    publisher: City of Toronto Transportation Services
+    dataset: https://open.toronto.ca/dataset/permanent-bicycle-counters/
+    licence: toronto-ogl
+    cadence: monthly
+    size: small
+    layer: movement
+    fetch: {kind: ckan-dump, resource_id: ea594605-f31a-4af8-a1de-8a0644bd3f9f, ext: csv}
+
+  - id: toronto-ksi
+    title: "Motor vehicle collisions involving killed or seriously injured persons"
+    publisher: City of Toronto with Toronto Police Service
+    dataset: https://open.toronto.ca/dataset/motor-vehicle-collisions-involving-killed-or-seriously-injured-persons/
+    licence: toronto-ogl
+    cadence: daily refresh, content lags roughly one year
+    size: small
+    layer: safety
+    fetch: {kind: ckan-dump, resource_id: 9c9a9b60-95c1-4541-ad44-15c4a643aff9, ext: csv}
+    fields_of_interest: [collision_id, accdate, stname1, stname2, acclass, road_user, injury, cyclist, pedestrian, longitude, latitude, light, rdsfcond, visible]
+    limits: "One row per person involved, not per collision. Deduplicate on collision_id. Excludes property-damage-only and minor-injury collisions."
+
+  - id: tps-collisions
+    title: "Traffic collisions, all severities (ASR-T-TBL-001)"
+    publisher: Toronto Police Service
+    dataset: https://data.torontopolice.on.ca/datasets/TorontoPS::traffic-collisions-open-data-asr-t-tbl-001/about
+    licence: tps-ogl
+    cadence: periodic
+    size: small
+    layer: safety
+    fetch:
+      kind: arcgis
+      url: https://services.arcgis.com/S9th0jAJ7bqgIRjw/arcgis/rest/services/Traffic_Collisions_Open_Data/FeatureServer/0/query
+      where: "OCC_YEAR>=2015"
+      bbox: [-79.545, 43.630, -79.375, 43.680]
+      ext: geojson
+    fields_of_interest: [EVENT_UNIQUE_ID, OCC_DATE, OCC_HOUR, INJURY_COLLISIONS, FTR_COLLISIONS, PD_COLLISIONS, FATALITIES, AUTOMOBILE, BICYCLE, PEDESTRIAN, LONG_WGS84, LAT_WGS84]
+    limits: "Coordinates are offset to the nearest intersection for privacy. Bounding box is a band around Bloor W; filter to segments after download."
+
+  - id: toronto-cycling-network
+    title: "Cycling network geometry"
+    publisher: City of Toronto Transportation Services
+    dataset: https://open.toronto.ca/dataset/cycling-network/
+    licence: toronto-ogl
+    cadence: semi-annually
+    size: small
+    layer: operations
+    fetch: {kind: ckan-dump, resource_id: 71fdb11f-99df-4f7b-8af1-d7240dae69b3, ext: csv}
+    limits: "Represents the network as the City currently maps it. Snapshot on every run: this is how we detect when a lane is removed from the official map."
+
+  - id: toronto-road-restrictions
+    title: "Road restrictions, current and planned"
+    publisher: City of Toronto Transportation Services
+    dataset: https://open.toronto.ca/dataset/road-restrictions/
+    licence: toronto-ogl
+    cadence: real-time
+    size: small
+    layer: operations
+    fetch: {kind: url, url: "https://secure.toronto.ca/opendata/cart/road_restrictions/v3?format=csv", ext: csv}
+    limits: "Current state only, no history. Frequent snapshots are the only way to build a construction timeline. The JSON variant has malformed escapes; use CSV."
+
+  - id: toronto-centreline
+    title: "Toronto Centreline (TCL)"
+    publisher: City of Toronto
+    dataset: https://open.toronto.ca/dataset/toronto-centreline-tcl/
+    licence: toronto-ogl
+    cadence: daily
+    size: large
+    layer: context
+    fetch: {kind: ckan-package, package_id: toronto-centreline-tcl, prefer_format: geojson, ext: geojson}
+    limits: "Needed to replace schematic segment geometry with real street geometry."
+
+  - id: ttc-subway-delay
+    title: "TTC subway delay data"
+    publisher: Toronto Transit Commission
+    dataset: https://open.toronto.ca/dataset/ttc-subway-delay-data/
+    licence: toronto-ogl
+    cadence: monthly
+    size: small
+    layer: movement
+    fetch: {kind: ckan-package, package_id: ttc-subway-delay-data, prefer_format: xlsx, ext: xlsx, latest_only: true}
+    limits: "Line 2 delays by station and cause. Station-level ridership is annual only."
+
+  - id: eccc-hourly-toronto-city
+    title: "Hourly weather, Toronto City station"
+    publisher: Environment and Climate Change Canada
+    dataset: https://api.weather.gc.ca/collections/climate-hourly
+    licence: eccc
+    cadence: hourly
+    size: small
+    layer: weather
+    fetch:
+      kind: ogc
+      url: https://api.weather.gc.ca/collections/climate-hourly/items
+      params: {CLIMATE_IDENTIFIER: "6158355"}
+      since_days: 400
+      ext: geojson
+    fields_of_interest: [LOCAL_DATE, TEMP, PRECIP_AMOUNT, WIND_SPEED, WEATHER_ENG_DESC]
+    limits: "Downtown station. Use Toronto City Centre (6158359) as backup. Snow depth and daylight need separate derivation."
+
+  - id: eccc-hourly-toronto-city-centre
+    title: "Hourly weather with conditions, Toronto City Centre station (island airport)"
+    publisher: Environment and Climate Change Canada
+    dataset: https://api.weather.gc.ca/collections/climate-hourly
+    licence: eccc
+    cadence: hourly
+    size: small
+    layer: weather
+    fetch:
+      kind: ogc
+      url: https://api.weather.gc.ca/collections/climate-hourly/items
+      params: {CLIMATE_IDENTIFIER: "6158359"}
+      since_days: 400
+      ext: geojson
+    fields_of_interest: [LOCAL_DATE, TEMP, PRECIP_AMOUNT, WEATHER_ENG_DESC, VISIBILITY, WINDCHILL, HUMIDEX]
+    limits: "The only downtown station that reports weather type (Snow, Fog, Freezing Rain). Toronto City reports NA for every hour. Lakeshore site, so fog is over-reported relative to Bloor."
+
+  - id: ttc-subway-delay-since-2025
+    title: "TTC subway delays since 2025, by station and cause"
+    publisher: Toronto Transit Commission
+    dataset: https://open.toronto.ca/dataset/ttc-subway-delay-data/
+    licence: toronto-ogl
+    cadence: monthly
+    size: small
+    layer: movement
+    fetch: {kind: ckan-dump, resource_id: 6088e14f-e46e-4f5c-9daa-dea1359ad396, ext: csv}
+    fields_of_interest: [Date, Time, Station, Code, "Min Delay", "Min Gap", Bound, Line]
+    limits: "Line 2 is coded BD. Station names are upper case with STATION suffix. Only delays are logged, not ridership."
+
+  - id: ttc-subway-ridership-2024-2025
+    title: "TTC subway ridership by station, typical weekday, Sep 2024 – Nov 2025 (PDF)"
+    publisher: Toronto Transit Commission
+    dataset: https://www.ttc.ca/transparency-and-accountability/transit-planning
+    licence: toronto-ogl
+    cadence: annual
+    size: small
+    layer: movement
+    fetch: {kind: url, url: "https://cdn.ttc.ca/-/media/Project/TTC/DevProto/Documents/Home/Transparency-and-accountability/Subway-Ridership-20242025.pdf?rev=a6abbd4e64cf4a219784c11149638754", ext: pdf}
+    limits: "PDF table, transcribed by hand into bloor-west/subway-usage.yaml. One number per station per year."
+
+  - id: ttc-subway-ridership-2023-2024
+    title: "TTC subway ridership by station, typical weekday, Sep 2023 – Aug 2024 (PDF)"
+    publisher: Toronto Transit Commission
+    dataset: https://www.ttc.ca/transparency-and-accountability/transit-planning
+    licence: toronto-ogl
+    cadence: annual
+    size: small
+    layer: movement
+    fetch: {kind: url, url: "https://cdn.ttc.ca/-/media/Project/TTC/DevProto/Documents/Home/Transparency-and-accountability/Subway-Ridership-20232024.pdf?rev=4424b4bf53e443bd85031beab56649b7", ext: pdf}
+    limits: "Same as above."
+
+  - id: toronto-traffic-cameras
+    title: "Traffic camera locations and still-image URLs"
+    publisher: City of Toronto Transportation Services
+    dataset: https://open.toronto.ca/dataset/traffic-cameras/
+    licence: toronto-ogl
+    cadence: as available
+    size: small
+    layer: operations
+    fetch: {kind: ckan-package, package_id: traffic-cameras, prefer_format: geojson, ext: geojson}
+    fields_of_interest: [MAINROAD, CROSSROAD, IMAGEURL, REFURL1, DIRECTION1]
+    limits: "14 cameras at 9 Bloor W intersections between Yonge and Kipling, including 7 station intersections. Still images refreshed every few minutes, no video, no archive. Any counting from them must run on our side and store only counts, never frames of identifiable people."
+
+  - id: bikeshare-station-information
+    title: "Bike Share Toronto station information (GBFS)"
+    publisher: Toronto Parking Authority
+    dataset: https://tor.publicbikesystem.net/ube/gbfs/v1/
+    licence: gbfs
+    cadence: real-time
+    size: small
+    layer: movement
+    fetch: {kind: url, url: "https://toronto.publicbikesystem.net/customer/ube/gbfs/v1/en/station_information", ext: json}
+
+  - id: bikeshare-station-status
+    title: "Bike Share Toronto station status (GBFS)"
+    publisher: Toronto Parking Authority
+    dataset: https://tor.publicbikesystem.net/ube/gbfs/v1/
+    licence: gbfs
+    cadence: real-time
+    size: small
+    layer: movement
+    fetch: {kind: url, url: "https://toronto.publicbikesystem.net/customer/ube/gbfs/v1/en/station_status", ext: json}
+    limits: "Point-in-time only. Trip history is published separately as monthly ridership files; add when needed."
+
+  - id: bikeshare-ridership
+    title: "Bike Share Toronto ridership, trip-level monthly files"
+    publisher: Toronto Parking Authority via City of Toronto Open Data
+    dataset: https://open.toronto.ca/dataset/bike-share-toronto-ridership-data/
+    licence: toronto-ogl
+    cadence: monthly, published in yearly bundles
+    size: large
+    layer: movement
+    fetch: {kind: ckan-package, package_id: bike-share-toronto-ridership-data, prefer_format: zip, ext: zip, latest_only: true}
+    limits: "Start and end station per trip, no route. Usage of corridor stations is a proxy for corridor cycling, not a measurement of it. Not yet parsed by the derive script."
+
+not_open:
+  # Desired data that is not published. Treat as partnership streams, never as gaps to be estimated.
+  - "food-delivery e-bike trips (Uber Eats, DoorDash, SkipTheDishes): would show commercial use of bike lanes; only via a data-sharing agreement with aggregation and delay"
+  - insurance claims
+  - emergency dispatch-to-arrival times
+  - individual business revenue
+  - commercial foot-traffic panels
+  - segment-level origin-destination flows

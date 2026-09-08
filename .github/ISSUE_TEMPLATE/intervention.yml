@@ -1,0 +1,25 @@
+name: Interventions log entry
+description: Report a change to a corridor, or a source that verifies an existing entry
+labels: [interventions]
+body:
+  - type: input
+    id: corridor
+    attributes: {label: Corridor, placeholder: toronto/bloor-west}
+    validations: {required: true}
+  - type: input
+    id: segments
+    attributes: {label: Segment ids, placeholder: "seg:royal-york-islington"}
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind
+      options: [bike-lane-installed, bike-lane-removed, lane-reconfigured, construction-start, construction-end, opening, legislation, court-ruling, announcement, other]
+    validations: {required: true}
+  - type: input
+    id: date
+    attributes: {label: Date observed or published, placeholder: YYYY-MM-DD}
+    validations: {required: true}
+  - type: textarea
+    id: source
+    attributes: {label: Primary source URL or document, description: A Council item, City notice, court decision, or your own dated photo.}
+    validations: {required: true}

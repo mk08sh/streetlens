@@ -1,0 +1,156 @@
+{
+ "date": "2026-09-04",
+ "city": "toronto",
+ "files": {
+  "toronto-tmc-most-recent.csv": {
+   "source": "toronto-tmc-most-recent",
+   "url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/datastore/dump/6afa3b1f-f6a5-4235-8bd6-7568411c19f4",
+   "licence": "toronto-ogl",
+   "layer": "movement",
+   "bytes": 1514422,
+   "sha256": "38e66ae874db45c70376d298c6f5605a107d58535cd461c5a2aafb8586fce2ab",
+   "fetched_at": "2026-09-04T17:34:36.884201+00:00",
+   "seconds": 0.2
+  },
+  "toronto-tmc-summary.csv": {
+   "source": "toronto-tmc-summary",
+   "url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/datastore/dump/1364bffa-29a3-4c39-af8a-925d8ca7bf1f",
+   "licence": "toronto-ogl",
+   "layer": "movement",
+   "bytes": 7485260,
+   "sha256": "513c95cfef1e3cbf1f34ff55e2b6fff30325ca896f2ca787211618bb1566f5aa",
+   "fetched_at": "2026-09-04T17:34:37.717975+00:00",
+   "seconds": 0.8
+  },
+  "toronto-bike-counters-locations.csv": {
+   "source": "toronto-bike-counters-locations",
+   "url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/datastore/dump/3de6bec4-221c-4f9e-aebc-780b6841e55c",
+   "licence": "toronto-ogl",
+   "layer": "movement",
+   "bytes": 7931,
+   "sha256": "3623c0e8895e8aded8565e0571ba7789f51f92dc067393cdb202c006cd2a6236",
+   "fetched_at": "2026-09-04T17:34:37.764526+00:00",
+   "seconds": 0.0
+  },
+  "toronto-bike-counters-daily.csv": {
+   "source": "toronto-bike-counters-daily",
+   "url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/datastore/dump/b6fdab07-bf2f-4c30-8b68-d4cde7674941",
+   "licence": "toronto-ogl",
+   "layer": "movement",
+   "bytes": 5680433,
+   "sha256": "46b49122bda2a2a66b972dea0c99b58520ba6e768052d4a497e7c9bd6eb6f03d",
+   "fetched_at": "2026-09-04T17:34:38.447594+00:00",
+   "seconds": 0.7
+  },
+  "toronto-bike-counters-15min-2026-2027.csv": {
+   "source": "toronto-bike-counters-15min-2026-2027",
+   "url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/datastore/dump/ea594605-f31a-4af8-a1de-8a0644bd3f9f",
+   "licence": "toronto-ogl",
+   "layer": "movement",
+   "bytes": 18226562,
+   "sha256": "b8c590cc6f7b483d9ef86d7e7916e7ca7f881f2c3b31e254fd84affd965be825",
+   "fetched_at": "2026-09-04T17:34:41.260185+00:00",
+   "seconds": 2.8
+  },
+  "toronto-ksi.csv": {
+   "source": "toronto-ksi",
+   "url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/datastore/dump/9c9a9b60-95c1-4541-ad44-15c4a643aff9",
+   "licence": "toronto-ogl",
+   "layer": "safety",
+   "bytes": 10756957,
+   "sha256": "14610282884c7a439e7d99a9bf70fb02e0b6b11be2652ecb8f60af000044f05f",
+   "fetched_at": "2026-09-04T17:34:42.029338+00:00",
+   "seconds": 0.8
+  },
+  "tps-collisions.geojson": {
+   "source": "tps-collisions",
+   "url": "https://services.arcgis.com/S9th0jAJ7bqgIRjw/arcgis/rest/services/Traffic_Collisions_Open_Data/FeatureServer/0/query (paged, 143596 features)",
+   "licence": "tps-ogl",
+   "layer": "safety",
+   "bytes": 91768362,
+   "sha256": "a2a1410dc2430e3396bd04ce32d902424271fd36b57089466d07b760db7f160c",
+   "fetched_at": "2026-09-04T17:37:13.138806+00:00",
+   "seconds": 151.1
+  },
+  "toronto-cycling-network.csv": {
+   "source": "toronto-cycling-network",
+   "url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/datastore/dump/71fdb11f-99df-4f7b-8af1-d7240dae69b3",
+   "licence": "toronto-ogl",
+   "layer": "operations",
+   "bytes": 2431108,
+   "sha256": "5bd2299171c4c8a53e1c2d6caa1a2ac4a1578604413173762aa9da55b91ebd8a",
+   "fetched_at": "2026-09-04T17:37:13.601825+00:00",
+   "seconds": 0.5
+  },
+  "toronto-road-restrictions.csv": {
+   "source": "toronto-road-restrictions",
+   "url": "https://secure.toronto.ca/opendata/cart/road_restrictions/v3?format=csv",
+   "licence": "toronto-ogl",
+   "layer": "operations",
+   "bytes": 1969590,
+   "sha256": "b9038cc7c23dda527368d65ec48218c07f27344d1824cf818a3d865cfbfdc27f",
+   "fetched_at": "2026-09-04T17:37:15.932018+00:00",
+   "seconds": 2.3
+  },
+  "ttc-subway-delay.xlsx": {
+   "source": "ttc-subway-delay",
+   "url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/996cfe8d-fb35-40ce-b569-698d51fc683b/resource/2ee1a65c-da06-4ad1-bdfb-b1a57701e46a/download/ttc-subway-delay-2024.xlsx",
+   "licence": "toronto-ogl",
+   "layer": "movement",
+   "bytes": 1423602,
+   "sha256": "cf940f861e3e29050751084f08a2852b5bb48ce9dfb2a20ac1bbff7db0b25112",
+   "fetched_at": "2026-09-04T17:37:16.309663+00:00",
+   "seconds": 0.4
+  },
+  "eccc-hourly-toronto-city.geojson": {
+   "source": "eccc-hourly-toronto-city",
+   "url": "https://api.weather.gc.ca/collections/climate-hourly/items (paged, 9589 features)",
+   "licence": "eccc",
+   "layer": "weather",
+   "bytes": 10480401,
+   "sha256": "5713bb622be2f0c163ab2e5d4fc55645d0bd0f69baa2e7f0e64cf8385df820b8",
+   "fetched_at": "2026-09-04T17:37:18.041819+00:00",
+   "seconds": 1.7
+  },
+  "bikeshare-station-information.json": {
+   "source": "bikeshare-station-information",
+   "url": "https://toronto.publicbikesystem.net/customer/ube/gbfs/v1/en/station_information",
+   "licence": "gbfs",
+   "layer": "movement",
+   "bytes": 568370,
+   "sha256": "7da603b124d6b7ea255dbcbf67702f50f83faccc048ec04ea734eadb0704cf9f",
+   "fetched_at": "2026-09-04T17:37:18.241585+00:00",
+   "seconds": 0.2
+  },
+  "bikeshare-station-status.json": {
+   "source": "bikeshare-station-status",
+   "url": "https://toronto.publicbikesystem.net/customer/ube/gbfs/v1/en/station_status",
+   "licence": "gbfs",
+   "layer": "movement",
+   "bytes": 333190,
+   "sha256": "4b376b4d2925e8096ecaf7641421f8a7ad38a5c038ede163c1e8ffd3813500b1",
+   "fetched_at": "2026-09-04T17:37:18.413484+00:00",
+   "seconds": 0.2
+  },
+  "eccc-hourly-toronto-city-centre.geojson": {
+   "source": "eccc-hourly-toronto-city-centre",
+   "url": "https://api.weather.gc.ca/collections/climate-hourly/items (paged, 9583 features)",
+   "licence": "eccc",
+   "layer": "weather",
+   "bytes": 10549709,
+   "sha256": "d59fb1bf67096b983737a2957aa414092158f1e8fead8e2f73f08899f2225f68",
+   "fetched_at": "2026-09-04T19:05:09.322879+00:00",
+   "seconds": 2.0
+  },
+  "ttc-subway-delay-since-2025.csv": {
+   "source": "ttc-subway-delay-since-2025",
+   "url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/datastore/dump/6088e14f-e46e-4f5c-9daa-dea1359ad396",
+   "licence": "toronto-ogl",
+   "layer": "movement",
+   "bytes": 2870708,
+   "sha256": "f4a1e5934d7fcd268a2049c452347212f2410871722775ac9a05d084b20b8fbc",
+   "fetched_at": "2026-09-04T19:05:09.453978+00:00",
+   "seconds": 0.1
+  }
+ }
+}

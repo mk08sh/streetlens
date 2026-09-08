@@ -1,0 +1,15 @@
+name: Data source
+description: Propose a new open data source or report a problem with one
+labels: [data]
+body:
+  - type: input
+    id: url
+    attributes: {label: Dataset URL}
+    validations: {required: true}
+  - type: input
+    id: licence
+    attributes: {label: Licence}
+  - type: textarea
+    id: limits
+    attributes: {label: What this data cannot tell us, description: Cadence, coverage, privacy offsets, known gaps.}
+    validations: {required: true}

@@ -1,0 +1,8 @@
+Derived data, documentation, methodology and analysis outputs in this repository
+are licensed under Creative Commons Attribution 4.0 International (CC BY 4.0).
+https://creativecommons.org/licenses/by/4.0/
+
+Raw data imported from third parties (City of Toronto Open Data, Toronto Police
+Service, Environment and Climate Change Canada, Bike Share Toronto, OpenStreetMap)
+retains its original licence. Each source and its licence is listed in
+cities/<city>/sources.yaml. When you redistribute a snapshot, carry those notices.
