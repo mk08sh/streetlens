@@ -1,5 +1,7 @@
 # StreetLens
 
+Live site: https://mk08sh.github.io/streetlens/ · Repository: https://github.com/mk08sh/streetlens
+
 **Open evidence about how streets and neighbourhoods actually work, for anyone making decisions about them.**
 
 StreetLens is an open-source, non-partisan civic project. It aggregates public data about a street corridor, records every change made to that corridor in an immutable public log, and lets residents contribute observations. The goal is to ground public-service decisions in the lived experience of the people who use the street, continuously, instead of in a one-time impact report.

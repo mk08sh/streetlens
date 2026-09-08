@@ -6,7 +6,7 @@ export function DataPage({ c }: { c: C }) {
     <article className="page">
       <h1>Data</h1>
       <p className="lede">Everything on this site comes from the snapshot taken on {c.corridor.snapshot}. Each file in a snapshot is recorded with its URL, size and SHA-256 hash so any number can be traced to its source.</p>
-      <p><a href="/data/toronto-bloor-west.json" download>Download the derived corridor file (JSON, ~0.4 MB)</a>. It contains every value shown on the site, per stretch and per station.</p>
+      <p><a href={`${import.meta.env.BASE_URL}data/toronto-bloor-west.json`} download>Download the derived corridor file (JSON, ~0.4 MB)</a>. It contains every value shown on the site, per stretch and per station.</p>
       <h2>What is covered, and from when</h2>
       <table className="cov">
         <tbody>

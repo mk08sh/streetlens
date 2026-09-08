@@ -25,7 +25,7 @@ export default function App() {
   const [ym, setYm] = useState('')
   const ym0 = useRef('')
 
-  useEffect(() => { fetch('/data/toronto-bloor-west.json').then(r => r.json()).then((d: C) => { setC(d); setYm(defaultMonth(d)) }); fetch('/data/toronto-bloor-west-behaviour.json').then(r => r.json()).then(setB); fetch('/data/toronto-bloor-west-flow.json').then(r => r.json()).then(setFl) }, [])
+  useEffect(() => { fetch(`${import.meta.env.BASE_URL}data/toronto-bloor-west.json`).then(r => r.json()).then((d: C) => { setC(d); setYm(defaultMonth(d)) }); fetch(`${import.meta.env.BASE_URL}data/toronto-bloor-west-behaviour.json`).then(r => r.json()).then(setB); fetch(`${import.meta.env.BASE_URL}data/toronto-bloor-west-flow.json`).then(r => r.json()).then(setFl) }, [])
   useEffect(() => { const h = () => setPage(pageFromHash()); window.addEventListener('hashchange', h); return () => window.removeEventListener('hashchange', h) }, [])
   const months = useMemo(() => c ? monthsBetween('2016-01', c.corridor.snapshot.slice(0, 7)) : [], [c])
   useEffect(() => { const ym = cursorYm(cursor); if (ym !== ym0.current) { ym0.current = ym; if (months.includes(ym)) setYm(ym) } }, [cursor, months])

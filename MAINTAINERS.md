@@ -1,8 +1,10 @@
 # Maintainers
 
+Contact maintainers through GitHub issues or discussions on this repository, not by personal email.
+
 | Name | Role | Affiliation | Disclosures |
 |---|---|---|---|
-| Mondod Tabrizi | Maintainer, Toronto city maintainer | Independent | None |
+| [@mk08sh](https://github.com/mk08sh) | Maintainer, Toronto city maintainer | Independent | None |
 
 ## Methodology advisory group
 

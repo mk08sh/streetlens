@@ -14,7 +14,7 @@ import yaml
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 CKAN = "https://ckan0.cf.opendata.inter.prod-toronto.ca"
-UA = "StreetLens snapshot (https://github.com/streetlens) contact: see repo"
+UA = "StreetLens snapshot (https://github.com/mk08sh/streetlens)"
 
 
 def get(url, timeout=300):

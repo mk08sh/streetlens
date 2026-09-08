@@ -5,6 +5,9 @@ on:
   schedule:
     - cron: "0 9 * * 1"   # Mondays 09:00 UTC
   workflow_dispatch:
+permissions:
+  contents: read
+
 jobs:
   snapshot:
     runs-on: ubuntu-latest

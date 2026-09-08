@@ -7,4 +7,4 @@ This project sits in the middle of a contested policy question. People on every 
 - No harassment, no personal attacks, no doxxing, no publishing of anyone's location data, ever.
 - Maintainers may remove content and contributors that break these rules. Decisions are logged.
 
-Report concerns to the maintainers listed in MAINTAINERS.md.
+Report concerns by opening an issue marked `conduct`, or through GitHub's private vulnerability reporting on this repository if the matter is sensitive.
