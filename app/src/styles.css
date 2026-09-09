@@ -174,10 +174,10 @@ footer a { color: var(--muted); }
 .flowmap .station line { stroke: var(--ink); stroke-opacity: .12; stroke-width: 1.5; }
 .flowmap .station text { font-size: 12.5px; fill: var(--ink); font-weight: 600; }
 .flowmap .station.dim { opacity: .3; }
-.flowmap .lane { transition: opacity .15s; }
-.flowmap .lane line { transition: stroke-width .25s ease; }
-.flowmap .lane .nodata { stroke: var(--ink); stroke-opacity: .12; stroke-width: 1; }
-.flowmap .lane.dim { opacity: .15; }
+.flowmap .lane path { transition: d .3s ease; }
+.flowmap .lane .cell { fill: transparent; }
+.flowmap .veil { fill: var(--card); fill-opacity: .78; pointer-events: none; }
+.flowmap .laneicon { fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
 .flowmap .hit { fill: transparent; cursor: pointer; outline: none; }
 .flowmap .hit:hover { fill: var(--ink); fill-opacity: .03; }
 .flowmap .hit.on { stroke: var(--ink); stroke-opacity: .5; stroke-width: 1; fill: transparent; rx: 6; }
