@@ -1,8 +1,9 @@
+import { memo } from 'react'
 import type { Corridor as C } from './types'
 import { bikesSameMonth, fmt, lastCounterMonth, latestTmc, monthLabel, pct, tpsRange } from './data'
 
 /** Plain-language, corridor-wide observations computed from the archive. Descriptive only. */
-export function Overview({ c }: { c: C }) {
+function OverviewInner({ c }: { c: C }) {
   const snap = c.corridor.snapshot
   // People vs vehicles: latest count at every station. No then-vs-now here: older counts ran 8 hours, recent ones 14, so totals are not comparable.
   let vehNow = 0, peopleNow = 0, bikeNow = 0, pedNow = 0
@@ -47,3 +48,5 @@ export function Overview({ c }: { c: C }) {
     </section>
   )
 }
+
+export const Overview = memo(OverviewInner)

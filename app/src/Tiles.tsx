@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from 'react'
+import { memo, useState, type ReactNode } from 'react'
 import type { Corridor as C, Segment } from './types'
 import { bikesLastYear, collisionsUsual, compare, counterMonth, countersMonth, delaysCover, delaysMonth, delaysUsual, fmt, ksiCovers, ksiMonth, latestTmc, monthEnd, monthLabel, prevYear, rankSegments, restrictionsMonth, tpsCovers, tpsMonth, tpsRange, usage, weatherCovers, weatherLastYear, weatherMonth } from './data'
 
@@ -17,7 +17,7 @@ const Big = ({ v, label }: { v: ReactNode; label: string }) => <div className="b
 const Row = ({ children }: { children: ReactNode }) => <div className="bigrow">{children}</div>
 const Empty = ({ children }: { children: ReactNode }) => <p className="empty">{children}</p>
 
-export function Tiles({ c, seg, ym }: { c: C; seg: Segment | null; ym: string }) {
+function TilesInner({ c, seg, ym }: { c: C; seg: Segment | null; ym: string }) {
   const end = monthEnd(ym), ml = monthLabel(ym)
   const stations = seg ? [seg.from, seg.to].map(id => c.boundaries.find(b => b.id === id)!) : c.boundaries
   const counts = stations.map(b => ({ b, t: latestTmc(c, b.id, end) })).filter(o => o.t)
@@ -71,7 +71,7 @@ export function Tiles({ c, seg, ym }: { c: C; seg: Segment | null; ym: string })
       <Tile title="Collisions" story={tpsCovers(c, ym) ? <>Police recorded <b>{tps.total}</b> collision{tps.total === 1 ? '' : 's'} on {where} in {ml}, {tps.injury} with an injury.{colUsual != null ? <> A usual month has about {fmt(colUsual)}.</> : null}{rank && rank[0].n > 0 ? <> The most were on {rank[0].s.name} ({rank[0].n}){rank[1]?.n ? ` and ${rank[1].s.name} (${rank[1].n})` : ''}.</> : null}{ksiCovers(c, ym) ? (ksi.length ? <> {ksi.length} {ksi.length === 1 ? 'person was' : 'people were'} killed or seriously injured.</> : <> No one was killed or seriously injured.</>) : null}</> : undefined}
         raw={<table><thead><tr><th>month</th><th>all</th><th>injury</th><th>bicycle</th><th>pedestrian</th></tr></thead><tbody>{Object.entries(seg ? (c.tps[seg.id] ?? {}) : Object.values(c.tps).reduce((acc, m) => { for (const [k, v] of Object.entries(m)) { const a = acc[k] ?? { total: 0, injury: 0, bicycle: 0, pedestrian: 0, ftr: 0 }; acc[k] = { total: a.total + v.total, injury: a.injury + v.injury, bicycle: a.bicycle + v.bicycle, pedestrian: a.pedestrian + v.pedestrian, ftr: a.ftr + v.ftr } } return acc }, {} as Record<string, { total: number; injury: number; bicycle: number; pedestrian: number; ftr: number }>)).sort().reverse().map(([m, d]) => <tr key={m}><td>{m}</td><td>{d.total}</td><td>{d.injury}</td><td>{d.bicycle}</td><td>{d.pedestrian}</td></tr>)}</tbody></table>}>
         {tpsCovers(c, ym) ? <><Row><Big v={tps.total} label="police-reported collisions" /><Big v={tps.injury} label="with an injury" /><Big v={tps.bicycle} label="involving a bicycle" /><Big v={tps.pedestrian} label="involving a pedestrian" /></Row><p className="sub">A count, not a rate: not adjusted for how many people used the street.</p></> : <Empty>Police collision data covers {c.coverage.tps?.[0]} to {c.coverage.tps?.[1]}.</Empty>}
-        {ksiCovers(c, ym) && ksi.length > 0 && <ul className="list">{ksi.map(k => <li key={k.collision_id + k.road_user}>{k.date}: {k.road_user.toLowerCase()} {k.injury.toLowerCase()} ({k.acclass.toLowerCase()})</li>)}</ul>}
+        {ksiCovers(c, ym) && ksi.length > 0 && <ul className="list">{ksi.map((k, i) => <li key={`${k.collision_id}-${i}`}>{k.date}: {k.road_user.toLowerCase()} {k.injury.toLowerCase()} ({k.acclass.toLowerCase()})</li>)}</ul>}
         {!ksiCovers(c, ym) && <p className="sub">Killed-or-seriously-injured records cover {c.coverage.ksi?.[0]} to {c.coverage.ksi?.[1]}.</p>}
       </Tile>
 
@@ -97,3 +97,5 @@ export function Tiles({ c, seg, ym }: { c: C; seg: Segment | null; ym: string })
     </div>
   )
 }
+
+export const Tiles = memo(TilesInner)

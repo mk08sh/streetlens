@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { memo, useState } from 'react'
 import type { Corridor as C, Segment } from './types'
 import { MODE_COLOURS, MODE_LABEL, QUESTIONS, minutes, type Behaviour, type QId, type Q1, type Q2 } from './behaviour'
 import { fmt } from './data'
@@ -6,7 +6,7 @@ import { fmt } from './data'
 const SERIES = ['#1f2a30', '#6a9bb5', '#c9a86a', '#8b7a9e']
 type P = { c: C; b: Behaviour; seg: Segment | null }
 
-export function Questions({ c, b, seg }: P) {
+function QuestionsInner({ c, b, seg }: P) {
   const [q, setQ] = useState<QId>('q4')
   const Q = QUESTIONS.find(x => x.id === q)!
   return (
@@ -170,3 +170,5 @@ function Parallel({ c, b, seg }: P) {
     <Cannot>Diversion, yet. Two counts years apart on a side street differ for many reasons. The comparison that matters is a count after a Bloor change against the same intersection before it, and none exists yet.</Cannot>
   </>
 }
+
+export const Questions = memo(QuestionsInner)

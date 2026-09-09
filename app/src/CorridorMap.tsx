@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import type { Corridor as C, Segment } from './types'
 import { bikesLastYear, collisionsUsual, compare, delaysUsual, fmt, monthLabel, prevYear, segmentState, tpsCovers, tpsMonth, verdict, weatherIcon, weatherLastYear, weatherMonth, type Verdict } from './data'
 import { WeatherBadge } from './WeatherBadge'
@@ -8,7 +9,7 @@ import { MODE_COLOURS, MODE_LABEL, type Behaviour } from './behaviour'
 type Props = { c: C; b: Behaviour | null; seg: Segment | null; ym: string; months: string[]; onSelect: (id: string | null) => void; onMonth: (ym: string) => void; showDash?: boolean }
 const VERDICT_TEXT: Record<Exclude<Verdict, null>, string> = { fewer: 'fewer collisions than usual', usual: 'about the usual number of collisions', more: 'more collisions than usual' }
 
-export function CorridorMap({ c, b, seg, ym, months, onSelect, onMonth, showDash = false }: Props) {
+function CorridorMapInner({ c, b, seg, ym, months, onSelect, onMonth, showDash = false }: Props) {
   const W = 1180, H = 400, padL = 44, padR = 44, roadY = 180
   const L = c.corridor.length_m
   const x = (m: number) => W - padR - (m / L) * (W - padL - padR)
@@ -89,3 +90,5 @@ export function CorridorMap({ c, b, seg, ym, months, onSelect, onMonth, showDash
     </div>
   )
 }
+
+export const CorridorMap = memo(CorridorMapInner)
