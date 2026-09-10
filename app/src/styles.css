@@ -171,38 +171,26 @@ footer a { color: var(--muted); }
 .whenbasis { font-size: 12px; color: var(--muted); max-width: 320px; }
 .flowbody { display: flex; align-items: stretch; }
 .flowmap { flex: 1; width: 100%; height: auto; display: block; }
-.flowmap .cross line { stroke: var(--ink); stroke-opacity: .07; stroke-width: 1.5; }
-.flowmap .cross.station line { stroke-opacity: .16; stroke-width: 2.5; }
-.flowmap .crosslabel text { font-size: 11px; fill: var(--muted); }
-.flowmap .crosslabel .stationname { font-size: 11.5px; fill: var(--ink); font-weight: 600; }
-.flowmap .crosslabel.dim { opacity: .35; }
-.flowmap .roadbed { fill: var(--ink); fill-opacity: .05; }
-.flowmap .lane .flow { stroke: currentColor; stroke-linecap: butt; animation: flow linear infinite; }
-.flowmap .lane.light .flow { opacity: .45; }
-.flowmap .lane.busy .flow { opacity: .8; }
-.flowmap .lane.peak .flow { opacity: 1; }
-.flowmap .lane .empty { stroke: var(--ink); stroke-opacity: .08; stroke-dasharray: 2 4; }
-.flowmap .lane.dim { opacity: .18; }
-.flowmap .lane.subway .flow { stroke: #8b7a9e; opacity: .75; }
+.flowmap .station line { stroke: var(--ink); stroke-opacity: .12; stroke-width: 1.5; }
+.flowmap .station text { font-size: 12.5px; fill: var(--ink); font-weight: 600; }
+.flowmap .station.dim { opacity: .3; }
+.flowmap .lane path { transition: d .3s ease; }
+.flowmap .lane .cell { fill: transparent; }
+.flowmap .veil { fill: var(--card); fill-opacity: .78; pointer-events: none; }
+.flowmap .laneicon { fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
 .flowmap .hit { fill: transparent; cursor: pointer; outline: none; }
-.flowmap .hit:hover { fill: var(--ink); fill-opacity: .04; }
-.flowmap .hit.on { stroke: var(--ink); stroke-width: 1.5; fill: transparent; rx: 6; }
+.flowmap .hit:hover { fill: var(--ink); fill-opacity: .03; }
+.flowmap .hit.on { stroke: var(--ink); stroke-opacity: .5; stroke-width: 1; fill: transparent; rx: 6; }
 .flowmap .dirlabel { font-size: 11.5px; fill: var(--muted); font-weight: 600; }
-.flowmap .lanelabel { font-size: 10.5px; font-weight: 600; }
-.flowmap .flowlegend text { font-size: 11px; fill: var(--muted); }
-.flowmap .lg { stroke: var(--ink); stroke-width: 5; stroke-dasharray: 6 4; }
-.flowmap .lg.light { opacity: .35; } .flowmap .lg.busy { opacity: .7; } .flowmap .lg.peak { opacity: 1; }
-.flowmap .lg.none { stroke-opacity: .12; stroke-dasharray: 2 4; }
-@keyframes flow { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -200; } }
-@media (prefers-reduced-motion: reduce) { .flowmap .lane .flow { animation: none; } }
+.flowmap .lanelabel { font-size: 11px; font-weight: 600; }
+.flowmap .flownote { font-size: 11px; fill: var(--muted); }
 .zoom { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 0 16px 0 4px; }
 .zoom .zl { font-size: 11px; color: var(--muted); white-space: nowrap; }
 .zoom .vslider { writing-mode: vertical-lr; direction: rtl; width: 22px; height: 150px; accent-color: var(--ink); margin: 0; }
 .flowslider { border-top: 1px solid var(--line); background: var(--bg); padding: 14px 24px 10px; }
 .bigslider { width: 100%; margin: 0; accent-color: var(--ink); height: 28px; }
-.bigslider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 26px; height: 26px; border-radius: 50%; background: var(--ink); border: 3px solid #fff; box-shadow: 0 1px 4px rgba(0,0,0,.3); cursor: grab; }
+.bigslider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 26px; height: 26px; border-radius: 50%; background: var(--ink); border: 3px solid #fff; box-shadow: 0 1px 4px rgba(0,0,0,.3); cursor: grab; margin-top: -10px; }
 .bigslider::-webkit-slider-runnable-track { height: 6px; border-radius: 3px; background: #cfd4d1; }
-.bigslider::-webkit-slider-thumb { margin-top: -10px; }
 .bigslider::-moz-range-thumb { width: 26px; height: 26px; border-radius: 50%; background: var(--ink); border: 3px solid #fff; }
 .bigslider::-moz-range-track { height: 6px; border-radius: 3px; background: #cfd4d1; }
 .ticks { position: relative; height: 16px; margin: 2px 12px 0; font-size: 10.5px; color: var(--muted); }

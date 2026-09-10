@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import type { Corridor as C } from './types'
 import { defaultMonth, monthLabel, monthsBetween } from './data'
 import { CorridorMap } from './CorridorMap'
@@ -27,6 +27,7 @@ export default function App() {
 
   useEffect(() => { fetch(`${import.meta.env.BASE_URL}data/toronto-bloor-west.json`).then(r => r.json()).then((d: C) => { setC(d); setYm(defaultMonth(d)) }); fetch(`${import.meta.env.BASE_URL}data/toronto-bloor-west-behaviour.json`).then(r => r.json()).then(setB); fetch(`${import.meta.env.BASE_URL}data/toronto-bloor-west-flow.json`).then(r => r.json()).then(setFl) }, [])
   useEffect(() => { const h = () => setPage(pageFromHash()); window.addEventListener('hashchange', h); return () => window.removeEventListener('hashchange', h) }, [])
+  const onMonth = useCallback((m: string) => { setYm(m); const [y, mo] = m.split('-').map(Number); setCursor(k => ({ ...k, y, m: mo, d: Math.min(k.d, daysIn(y, mo)) })) }, [])
   const months = useMemo(() => c ? monthsBetween('2016-01', c.corridor.snapshot.slice(0, 7)) : [], [c])
   useEffect(() => { const ym = cursorYm(cursor); if (ym !== ym0.current) { ym0.current = ym; if (months.includes(ym)) setYm(ym) } }, [cursor, months])
   useEffect(() => {
@@ -58,7 +59,7 @@ export default function App() {
           {b && <Questions c={c} b={b} seg={seg} />}
           <section className="segment">
             <h2 className="sectionhead">Month by month <span className="sub">{monthLabel(ym)} · move the slider on the map to change</span></h2>
-            <CorridorMap c={c} b={b} seg={seg} ym={ym} months={months} onSelect={setSel} onMonth={m => { setYm(m); const [y, mo] = m.split('-').map(Number); setCursor(k => ({ ...k, y, m: mo, d: Math.min(k.d, daysIn(y, mo)) })) }} showDash />
+            <CorridorMap c={c} b={b} seg={seg} ym={ym} months={months} onSelect={setSel} onMonth={onMonth} showDash />
             <Tiles c={c} seg={seg} ym={ym} />
             <p className="caveat">Raw measurements for {seg ? 'one stretch' : 'the street'} in one month. Not adjusted for season, weather or weekday, and not compared with any other street. A change on the street cannot be shown to have caused a change in these numbers from this view alone.</p>
           </section>
