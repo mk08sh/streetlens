@@ -54,9 +54,10 @@ export function FlowMap({ c, fl, seg, cursor, gran, onSelect, onCursor, onGran }
   // One value per stretch per lane, then a ribbon per lane through the stretch midpoints.
   const lanes = useMemo(() => (['wb', 'eb'] as Dir[]).flatMap(dir => LANES.map((m, i) => {
     const cells = c.segments.map(s => {
-      if (m.mode === 'subway') { const a = fl.subway[s.from] ?? 0, b = fl.subway[s.to] ?? 0; const v = (a + b) / 2 / 2; return { s, rate: v, ratio: v / (subwayMax / 2), basis: 'typical weekday riders at the two stations, split evenly by direction; no hourly or directional data exists' } }
+      if (m.mode === 'subway') { const a = fl.subway[s.from] ?? 0, b = fl.subway[s.to] ?? 0; const v = (a + b) / 2 / 2; return { s, rate: v, ratio: v / (subwayMax / 2), basis: 'typical weekday riders at the two stations, split evenly by direction; no hourly or directional data exists', stale: false } }
       const v = laneRate(fl, s.id, m.mode, dir, cursor, gran)
-      return { s, rate: v.rate, ratio: v.rate == null ? null : Math.min(1, v.rate / (gran === 'hour' ? ref.hour : ref.avg)[m.mode]), basis: v.basis }
+      const stale = v.source === 'count' && v.date != null && (Date.parse(cursorDate(cursor)) - Date.parse(v.date)) > 365 * 86400000
+      return { s, rate: v.rate, ratio: v.rate == null ? null : Math.min(1, v.rate / (gran === 'hour' ? ref.hour : ref.avg)[m.mode]), basis: stale ? `${v.basis} · more than a year before the selected date` : v.basis, stale }
     })
     const w = (r: number | null) => r == null ? 1 : 2 + Math.sqrt(r) * (m.max - 2)
     const pts = [{ x: x(L), w: w(cells[cells.length - 1].ratio) }, ...cells.map(k => ({ x: (x(k.s.pos_start_m) + x(k.s.pos_end_m)) / 2, w: w(k.ratio) })), { x: x(0), w: w(cells[0].ratio) }].sort((a, b) => a.x - b.x)
@@ -83,9 +84,15 @@ export function FlowMap({ c, fl, seg, cursor, gran, onSelect, onCursor, onGran }
             <line x1={x(b.pos_m)} x2={x(b.pos_m)} y1={hitTop - 4} y2={hitBot + 4} />
             <text x={x(b.pos_m)} y={hitTop - 14 - (i % 2 ? 16 : 0)} textAnchor="middle">{b.station}</text>
           </g>)}
+          <defs>
+            <pattern id="stale" width={7} height={7} patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1={0} y1={0} x2={0} y2={7} stroke="#fff" strokeWidth={2.2} /></pattern>
+            {lanes.map(l => <clipPath key={`clip-${l.dir}-${l.m.mode}`} id={`clip-${l.dir}-${l.m.mode}`}><path d={l.d} /></clipPath>)}
+          </defs>
           {/* ribbons */}
           {lanes.map(l => <g key={`${l.dir}-${l.m.mode}`} className={`lane ${seg ? 'hasfocus' : ''}`}>
             <path d={l.d} fill={l.m.colour} />
+            {/* age texture: a City count older than a year is hatched */}
+            <g clipPath={`url(#clip-${l.dir}-${l.m.mode})`}>{l.cells.filter(k => k.stale).map(k => <rect key={k.s.id + 'stale'} x={x(k.s.pos_end_m)} y={laneY(l.dir, l.i) - laneStep / 2} width={x(k.s.pos_start_m) - x(k.s.pos_end_m)} height={laneStep} fill="url(#stale)" opacity={0.85} />)}</g>
             {/* per-stretch hover targets with the number and source */}
             {l.cells.map(k => <rect key={k.s.id} x={x(k.s.pos_end_m)} y={laneY(l.dir, l.i) - laneStep / 2} width={x(k.s.pos_start_m) - x(k.s.pos_end_m)} height={laneStep} className={`cell ${seg ? (seg.id === k.s.id ? 'on' : 'dim') : ''}`}>
               <title>{k.s.name} · {l.m.name} {l.dir === 'eb' ? 'eastbound →' : '← westbound'}: {k.rate == null ? 'no data' : `${fmt(k.rate)} per hour`} · {k.basis}</title></rect>)}
@@ -98,7 +105,7 @@ export function FlowMap({ c, fl, seg, cursor, gran, onSelect, onCursor, onGran }
           {(['wb', 'eb'] as Dir[]).map(dir => LANES.map((m, i) => <svg key={dir + m.mode} x={x(L) - 40} y={laneY(dir, i) - 12} width={24} height={24} viewBox="0 0 24 24" className="laneicon" style={{ color: m.colour }}><title>{m.name}</title>{ICON[m.mode]}</svg>))}
           <text x={x(0) + 10} y={laneY('wb', 2) + 4} className="dirlabel">← westbound</text>
           <text x={x(0) + 10} y={laneY('eb', 2) + 4} className="dirlabel">eastbound →</text>
-          <text x={padL - 40} y={H - 10} className="flownote">Pipes swell with people per hour, scaled against the busiest measured for that kind of movement on this street. A thread means no measurement. Subway riders are split evenly by direction. Hover a stretch of any pipe for the number and its source.</text>
+          <text x={padL - 40} y={H - 10} className="flownote">Pipes swell with people per hour, scaled against the busiest measured for that kind of movement on this street. A thread means no measurement. Hatched means the count is more than a year old. Subway riders are split evenly by direction. Hover any stretch for the number and its source.</text>
         </svg>
         <div className="zoom">
           <span className="zl"><b>+</b> hours</span>

@@ -50,7 +50,7 @@ export function latestDay(fl: Flow, bid: string, date: string): { date: string; 
   return best >= 0 ? { date: days[best], sd: fl.station_days[bid][days[best]] } : null
 }
 
-export type LaneValue = { rate: number | null; basis: string }  // rate = per hour
+export type LaneValue = { rate: number | null; basis: string; source: 'counter' | 'count' | 'none'; date?: string }  // rate = per hour
 
 /** Rate per hour for a lane on a stretch at the cursor and granularity. Honest about what it is based on. */
 export function laneRate(fl: Flow, segId: string, mode: Mode, dir: Dir, c: Cursor, g: Gran): LaneValue {
@@ -59,22 +59,22 @@ export function laneRate(fl: Flow, segId: string, mode: Mode, dir: Dir, c: Curso
   // Bicycles from a permanent counter if the stretch has one.
   if (mode === 'bike' && fl.counters_hourly[`${segId}|${dir}`]) {
     const hrs = fl.counters_hourly[`${segId}|${dir}`], dly = fl.counters_daily[`${segId}|${dir}`]
-    if (g === 'hour') { const arr = hrs[ym]; const v = arr?.[c.h]; return { rate: v ?? null, basis: v == null ? 'counter has no data for this month' : `counter, weekday average for this hour in ${ym}` } }
-    if (g === 'day') { const v = dly[date]; return { rate: v == null ? null : v / 24, basis: v == null ? 'counter has no data for this day' : 'counter, this day' } }
+    if (g === 'hour') { const arr = hrs[ym]; const v = arr?.[c.h]; return { rate: v ?? null, source: v == null ? 'none' : 'counter', basis: v == null ? 'counter has no data for this month' : `counter, weekday average for this hour in ${ym}` } }
+    if (g === 'day') { const v = dly[date]; return { rate: v == null ? null : v / 24, source: v == null ? 'none' : 'counter', basis: v == null ? 'counter has no data for this day' : 'counter, this day' } }
     const vals = counterPeriods(fl, `${segId}|${dir}`)[g === 'month' ? ym : String(c.y)] ?? []
-    return { rate: vals.length ? vals.reduce((a, b) => a + b, 0) / vals.length / 24 : null, basis: vals.length ? `counter, average day in ${g === 'month' ? ym : c.y} (${vals.length} days)` : 'counter has no data for this period' }
+    return { rate: vals.length ? vals.reduce((a, b) => a + b, 0) / vals.length / 24 : null, source: vals.length ? 'counter' : 'none', basis: vals.length ? `counter, average day in ${g === 'month' ? ym : c.y} (${vals.length} days)` : 'counter has no data for this period' }
   }
   // Everything else from the count day at the entering intersection: eastbound enters at the west end (to), westbound at the east end (from).
   const bid = dir === 'eb' ? seg.to : seg.from
   const ld = latestDay(fl, bid, g === 'hour' || g === 'day' ? date : g === 'month' ? `${ym}-${pad(daysIn(c.y, c.m))}` : `${c.y}-12-31`)
-  if (!ld) return { rate: null, basis: 'no City count at this intersection yet' }
+  if (!ld) return { rate: null, source: 'none', basis: 'no City count at this intersection yet' }
   const key = (mode === 'ped' ? 'ped' : `${mode}_${dir}`) as keyof StationDay
   const arr = ld.sd[key] as number[]
   const counted = ld.sd.counted
   const hours = counted.filter(Boolean).length || 1
-  if (g === 'hour') { if (!counted[c.h]) return { rate: null, basis: `count day ${ld.date} did not cover ${pad(c.h)}:00` }; const v = arr[c.h] * (mode === 'ped' ? 0.5 : 1); return { rate: v, basis: `City count on ${ld.date}, this hour` } }
+  if (g === 'hour') { if (!counted[c.h]) return { rate: null, source: 'none', basis: `count day ${ld.date} did not cover ${pad(c.h)}:00` }; const v = arr[c.h] * (mode === 'ped' ? 0.5 : 1); return { rate: v, source: 'count', date: ld.date, basis: `City count on ${ld.date}, this hour` } }
   const total = arr.reduce((a, b) => a + b, 0) * (mode === 'ped' ? 0.5 : 1)
-  return { rate: total / hours, basis: `City count on ${ld.date}, average of ${hours} counted hours` }
+  return { rate: total / hours, source: 'count', date: ld.date, basis: `City count on ${ld.date}, average of ${hours} counted hours` }
 }
 
 /** Corridor-wide references so density means the same on every stretch: the busiest measured hour, and the busiest
